@@ -24,20 +24,20 @@ function remarkerOverlay(withPopup){
 	}
 	
 	function destroy(){	
-		_overlay.style.display = "none";
-		_overlay.removeNode(true);
-		_overlay = null;	
 		_popup.style.display = "none";
-		_popup.removeNode(true);
-		_popup = null;
+		_popup = null;		
+		_overlay.style.display = "none";
+		_overlay = null;	
+		
+		
 	}
 	
 	create();
 	
 	return {	
 		destroy : destroy,
-		_overlay : overlay,
-		_popup: popup
+		_overlay : _overlay,
+		_popup : _popup
 	
 	}
 
