@@ -8,6 +8,8 @@ function RMCodeLoader(){
 	var _loaderStatus
 	var _loaderPercent = 0;
 	var _itemsToLoad = 0;
+	var _loaderProgressContainer
+	var _loaderProgressBar
 	
 	//Custom key combination check that waits for keys and then launches remarker
 	function keyCheck(e){
@@ -45,10 +47,27 @@ function RMCodeLoader(){
 		_loaderOverlay.style.padding = "20px"
 		_loaderOverlay.style.zIndex = 2147009001;
 		
+			
+		
+		_loaderProgressContainer = document.createElement("DIV");
+		_loaderProgressContainer.style.cssText = 'width:300px;overflow:hidden;padding:2px;background: #444;border: 1px solid #000;margin-left: auto; margin-right: auto; margin-top:200px;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;';
+		_loaderProgressContainer.style.cssText+="background-color: #FFF;background-image: -moz-linear-gradient(center top, #CCC, #FFF);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCC), color-stop(1, #FFF));background-image: linear-gradient(top, #CCC, #FFF);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#CCC', EndColorStr = '#FFF');background-repeat: no-repeat;"
+		_loaderOverlay.appendChild(_loaderProgressContainer);
+		
+		_loaderProgressBar = document.createElement("DIV");
+		_loaderProgressBar.style.cssText = "height:18px;line-height:20px;border: 1px solid #CB0;margin:0;padding:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;";
+		_loaderProgressBar.style.cssText+="background-color: #FD0;background-image: -moz-linear-gradient(center top, #FD0, #CB0);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FD0), color-stop(1, #CB0));background-image: linear-gradient(top, #FD0, #CB0);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#FD0', EndColorStr = '#CB0');background-repeat: no-repeat;"
+		_loaderProgressContainer.appendChild(_loaderProgressBar);
+		
+		_loaderProgressBar.style.width = "0px";
+		
 		_loaderStatus = document.createElement("P");
-		_loaderStatus.style.cssText = 'color: #EEEEEE; font-size: 20px; font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;';;
-		_loaderStatus.innerHTML = 'Loading Remarker Javascript 0%';
-		_loaderOverlay.appendChild(_loaderStatus);		
+		_loaderStatus.style.cssText = "font-family:'ff-meta-serif-web-pro',Georgia,serif;height:100%;color:#222222;text-shadow:1px 1px 1px rgba(255, 255, 255, 0.8);text-align: center;margin: -24px 0px 6px;";
+		_loaderStatus.innerHTML = 'Loading Remarker 0%';
+		_loaderProgressContainer.appendChild(_loaderStatus);	
+		
+		
+		
 		
 		document.body.appendChild(_loaderOverlay);
 		
@@ -117,7 +136,8 @@ function RMCodeLoader(){
 	//increase the loading percentage and once done launch the afterLoad method
 	function incPercent(){
 		_loaderPercent += Math.ceil(100 / _itemsToLoad);
-		_loaderStatus.innerHTML = 'Loading Remarker Javascript '+_loaderPercent+'%';
+		_loaderStatus.innerHTML = 'Loading Remarker '+_loaderPercent+'%';
+		_loaderProgressBar.style.width = "" + (_loaderPercent*3)-12 + "px"
 		if(_loaderPercent>=100){
 			afterLoad();			
 		}	
