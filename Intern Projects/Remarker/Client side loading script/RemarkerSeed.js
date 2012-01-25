@@ -2,12 +2,12 @@
 
 function RMSeed(){
 
-	var shortcutPressed = false;
+	var _shortcutPressed = false;
 	var _loaderOverlay
 	
 	//Custom key combination check that waits for keys and then launches remarker
 	function keyCheck(e){
-		if(!shortcutPressed){
+		if(!_shortcutPressed){
 			var ev=(!e)?window.event:e;				
 			var kC = (window.event)?window.event.keyCode:e.which;
 			
@@ -16,39 +16,18 @@ function RMSeed(){
 			
 			if(ctrlPressed && altPressed && kC==82){
 				startUp();
-				shortcutPressed = true;
+				_shortcutPressed = true;
 			}
 		}
 	}
 	
 	
-	function startUp(){
-		
-		//loading bar /spinner thing
-		var loadBar = document.createElement("DIV");
-		loadBar.style.cssText="width:200px;height:30px;position:absolute;left:0px;top:0px;";
-		loadBar.style.cssText+="background-color: #555555;background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
-		document.body.appendChild(loadBar);
-		
-		var statusText = document.createElement("p");
-		statusText.innerHTML="Loading remarker...";
-		statusText.style.cssText="margin:0px;padding:0px;color: #FFD;font:12px arial,sans-serif;font-style:italic;padding:7px 10px;";
-		loadBar.appendChild(statusText);
-		
+	function startUp(){					
 		createOverlay();
 		showOverlay();
 	}
 	
 	function loadExternalJavascript(){
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	}
 	
@@ -61,7 +40,6 @@ function RMSeed(){
 		_loaderOverlay.style.cssText+="background-color: #555555;background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
 		_loaderOverlay.style.padding = "20px"
 		_loaderOverlay.style.zIndex = 2147009001;
-		_loaderOverlay.innerHTML = 'LOADING';
 		
 		document.body.appendChild(_loaderOverlay);
 		
