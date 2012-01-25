@@ -148,7 +148,7 @@ function RMCodeLoader(){
 	
 	//create all the objects here.
 	function afterLoad(){
-		remarker = 100000;
+		remarker = new RemarkerMain();
 	
 	
 	
