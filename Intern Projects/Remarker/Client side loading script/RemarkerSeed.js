@@ -1,4 +1,5 @@
 
+var globalCodeLocation = "C:/Program Files/Git/Github Projects/sandbox/Intern Projects/Remarker";
 
 function RMCodeLoader(){
 
@@ -103,8 +104,9 @@ function RMCodeLoader(){
 		document.onkeydown = keyCheck; 
 		document.onkeyup = keyCheck;	}
 	
+	//use include methods to pull javascript from server
 	function loadAllTheCode(){
-		includeCSS('http://remarker.co.za/remarkerStyles.css',function(){});
+		includeCSS(globalCodeLocation + '/remarkerStyles.css',function(){});
 		_itemsToLoad = 1;
 		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent()});
 		
@@ -133,6 +135,7 @@ function RMCodeLoader(){
 	window.onload = onload;
 		
 }
+
 var remarker = null;
 var rmCodeLoader = new RMCodeLoader();
 
