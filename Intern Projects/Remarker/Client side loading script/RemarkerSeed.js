@@ -43,20 +43,24 @@ function RMCodeLoader(){
 		_loaderOverlay = document.createElement('DIV');		
 		_loaderOverlay.className = 'rm_loader_overlay rm_ignore';
 		_loaderOverlay.style.cssText = 'width:100%; height:100%; position:fixed; top:0px; left:0px; right:0px; display:none; opacity: .90; filter: alpha(opacity=90);';
-		_loaderOverlay.style.cssText+="background-color: #555555;background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
+		_loaderOverlay.style.cssText+="background-color: #555555; background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
 		_loaderOverlay.style.padding = "20px"
 		_loaderOverlay.style.zIndex = 2147009001;
 		
 			
 		
 		_loaderProgressContainer = document.createElement("DIV");
-		_loaderProgressContainer.style.cssText = 'width:300px;overflow:hidden;padding:2px;background: #444;border: 2px solid #222;margin-left: auto; margin-right: auto; margin-top:200px;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;';
-		_loaderProgressContainer.style.cssText+="background-color: #FFF;background-image: -moz-linear-gradient(center top, #CCC, #FFF);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCC), color-stop(1, #FFF));background-image: linear-gradient(top, #CCC, #FFF);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#CCC', EndColorStr = '#FFF');background-repeat: no-repeat;"
+		_loaderProgressContainer.style.cssText = 'width:300px; overflow:hidden; padding:2px; background: #444444; border: 2px solid #222222; margin-bottom:0px; margin-left: auto; margin-right: auto; margin-top:200px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;';
+		_loaderProgressContainer.style.cssText+="background-color: #FFFFFF; ";
+		_loaderProgressContainer.style.cssText+="background-image: -moz-linear-gradient(center top, #CCC, #FFF); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCC), color-stop(1, #FFF)); background-image: linear-gradient(top, #CCC, #FFF);";
+		//_loaderProgressContainer.style.cssText+= "filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#CCCCCC', EndColorStr = '#FFFFFF'); background-repeat: no-repeat;"
 		_loaderOverlay.appendChild(_loaderProgressContainer);
 		
 		_loaderProgressBar = document.createElement("DIV");
-		_loaderProgressBar.style.cssText = "height:18px;line-height:20px;border: 1px solid #CB0;margin:0;padding:5px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;";
-		_loaderProgressBar.style.cssText+="background-color: #FD0;background-image: -moz-linear-gradient(center top, #FD0, #CB0);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FD0), color-stop(1, #CB0));background-image: linear-gradient(top, #FD0, #CB0);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#FD0', EndColorStr = '#CB0');background-repeat: no-repeat;"
+		_loaderProgressBar.style.cssText = "height:18px; line-height:20px; border: 1px solid #CCBB00; margin:0px; padding:5px; -moz-border-radius: 5px; -webkit-border-radius: 5px; border-radius: 5px;";
+		_loaderProgressBar.style.cssText+="background-color: #FFDD00;";
+		_loaderProgressBar.style.cssText+="background-image: -moz-linear-gradient(center top, #FD0, #CB0);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #FD0), color-stop(1, #CB0));background-image: linear-gradient(top, #FD0, #CB0);";
+		//_loaderProgressBar.style.cssText+= "filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#FFDD00', EndColorStr = '#CCBB00'); background-repeat: no-repeat;"
 		_loaderProgressContainer.appendChild(_loaderProgressBar);
 		
 		_loaderProgressBar.style.width = "0px";
@@ -88,7 +92,7 @@ function RMCodeLoader(){
 		script.onload = script.onreadystatechange = function(){
 				if( !done && ( !this.readyState || this.readyState == "loaded" || this.readyState == "complete") ){
 						done = true;
-						console.log('Loaded JS from: ' + url);	
+						//console.log('Loaded JS from: ' + url);	
 						callback();						
 						script.onload = script.onreadystatechange = null;
 						head.removeChild( script );
@@ -109,7 +113,7 @@ function RMCodeLoader(){
 		style.onload = style.onreadystatechange = function(){
 			if( !done && ( !this.readyState || this.readyState == "loaded" || this.readyState == "complete") ){
 				done = true;
-				console.log('Loaded CSS from: ' + url);		
+				//console.log('Loaded CSS from: ' + url);		
 				callback();						
 				style.onload = style.onreadystatechange = null;        	
 			}
@@ -125,12 +129,11 @@ function RMCodeLoader(){
 	
 	//use include methods to pull javascript from server
 	function loadAllTheCode(){
-		includeCSS(globalCodeLocation + '/remarkerStyles.css',function(){});
-		_itemsToLoad = 1;
+		includeCSS(globalCodeLocation + '/css/remarkerStyles.css',function(){});
+		_itemsToLoad = 2;
 		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent()});
+		includeJS(globalCodeLocation + '/js/remarkerMain.js',function(){incPercent()});
 		
-	
-	
 	}
 	
 	//increase the loading percentage and once done launch the afterLoad method
