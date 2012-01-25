@@ -1,10 +1,12 @@
 
 
-function RMSeed(){
+function RMCodeLoader(){
 
 	var _shortcutPressed = false;
 	var _loaderOverlay
 	var _loaderStatus
+	var _loaderPercent = 0;
+	var _itemsToLoad = 0;
 	
 	//Custom key combination check that waits for keys and then launches remarker
 	function keyCheck(e){
@@ -26,6 +28,7 @@ function RMSeed(){
 	function startUp(){					
 		createOverlay();
 		showOverlay();
+		loadAllTheCode();
 	}
 	
 	function loadExternalJavascript(){
@@ -42,7 +45,7 @@ function RMSeed(){
 		_loaderOverlay.style.zIndex = 2147009001;
 		
 		_loaderStatus = document.createElement("P");
-		_loaderStatus.style.cssText = 'color: #EEEEEE; font-size: 30px; font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;';;
+		_loaderStatus.style.cssText = 'color: #EEEEEE; font-size: 20px; font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;';;
 		_loaderStatus.innerHTML = 'Loading Remarker Javascript 0%';
 		_loaderOverlay.appendChild(_loaderStatus);		
 		
@@ -50,6 +53,7 @@ function RMSeed(){
 		
 	}
 	
+	//show the overlay
 	function showOverlay(){
 		_loaderOverlay.style.display = 'block';		
 	}
@@ -93,14 +97,34 @@ function RMSeed(){
 		head.appendChild(style);		
 	}	
 	
+	//first function to bind keypresses
+	function onload(){
+		document.onkeypress = keyCheck;	//IE only send onkeypress for characters
+		document.onkeydown = keyCheck; 
+		document.onkeyup = keyCheck;	}
+	
+	function loadAllTheCode(){
+		includeCSS('http://remarker.co.za/remarkerStyles.css',function(){});
+		_itemsToLoad = 1;
+		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent()});
+		
+	
+	
+	}
+	
+	function incPercent(){
+		_loaderPercent += Math.ceil(100 / _itemsToLoad);
+		_loaderStatus.innerHTML = 'Loading Remarker Javascript '+_loaderPercent+'%';
+		if(_loaderPercent>=100){
+			remarker = 100000;
+		}
+	
+	}
 	
 	//////////////////////////////////////////////////////////
-	
-	//bind keypresses	
-	document.onkeypress = keyCheck;	//IE only send onkeypress for characters
-	document.onkeydown = keyCheck; 
-	document.onkeyup = keyCheck;
-	
+	window.onload = onload;
+		
 }
+var remarker = null;
+var rmCodeLoader = new RMCodeLoader();
 
-window.onload = RMSeed;
