@@ -23,6 +23,7 @@ function RemarkerMain(){
 	function startUp(){
 		jQuery.noConflict();  //make sure $ is ours to play with. But use jQuery mostly anyway.
 		scrubPage();	
+		var r = new RemarkerLogin();
 	}
 	
 	//scrub page removes all links from page and unbinds mouseevents
@@ -33,7 +34,6 @@ function RemarkerMain(){
 		jQuery(document).unbind('mousedown');
 		jQuery(document).unbind('click');
 		jQuery(document).unbind('mouseup');	
-		alert('scrubbed');
 	}
 	
 	

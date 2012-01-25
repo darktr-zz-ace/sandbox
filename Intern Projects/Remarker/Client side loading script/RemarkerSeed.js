@@ -130,9 +130,11 @@ function RMCodeLoader(){
 	//use include methods to pull javascript from server
 	function loadAllTheCode(){
 		includeCSS(globalCodeLocation + '/css/remarkerStyles.css',function(){});
-		_itemsToLoad = 2;
+		_itemsToLoad = 4;
 		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent()});
 		includeJS(globalCodeLocation + '/js/remarkerMain.js',function(){incPercent()});
+		includeJS(globalCodeLocation + '/js/remarkerLogin.js',function(){incPercent()});
+		includeJS(globalCodeLocation + '/js/remarkerOverlay.js',function(){incPercent()});
 		
 	}
 	
@@ -142,20 +144,25 @@ function RMCodeLoader(){
 		_loaderStatus.innerHTML = 'Loading Remarker '+_loaderPercent+'%';
 		_loaderProgressBar.style.width = "" + (_loaderPercent*3)-12 + "px"
 		if(_loaderPercent>=100){
-			afterLoad();			
+			setTimeout("rmCodeLoader.afterLoad()",200);			
 		}	
 	}
 	
 	//create all the objects here.
 	function afterLoad(){
+		_loaderOverlay.style.display = 'none';		
 		remarker = new RemarkerMain();
-	
-	
-	
+			
 	}
 	
 	//////////////////////////////////////////////////////////
 	window.onload = onload;
+	
+	return {
+		afterLoad:afterLoad
+	
+	
+	}
 		
 }
 
