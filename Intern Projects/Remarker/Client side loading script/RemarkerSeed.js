@@ -4,6 +4,7 @@ function RMSeed(){
 
 	var _shortcutPressed = false;
 	var _loaderOverlay
+	var _loaderStatus
 	
 	//Custom key combination check that waits for keys and then launches remarker
 	function keyCheck(e){
@@ -36,10 +37,14 @@ function RMSeed(){
 		_loaderOverlay = document.createElement('DIV');		
 		_loaderOverlay.className = 'rm_loader_overlay rm_ignore';
 		_loaderOverlay.style.cssText = 'width:100%; height:100%; position:fixed; top:0px; left:0px; right:0px; display:none; opacity: .80; filter: alpha(opacity=80);';
-		_loaderOverlay.style.cssText += 'color: #EEEEEE; font-size: 30px; font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;';
 		_loaderOverlay.style.cssText+="background-color: #555555;background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
 		_loaderOverlay.style.padding = "20px"
 		_loaderOverlay.style.zIndex = 2147009001;
+		
+		_loaderStatus = document.createElement("P");
+		_loaderStatus.style.cssText = 'color: #EEEEEE; font-size: 30px; font-family: Verdana, Arial, SunSans-Regular, Sans-Serif;';;
+		_loaderStatus.innerHTML = 'Loading Remarker Javascript 0%';
+		_loaderOverlay.appendChild(_loaderStatus);		
 		
 		document.body.appendChild(_loaderOverlay);
 		
