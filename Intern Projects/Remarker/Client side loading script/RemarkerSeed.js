@@ -42,7 +42,7 @@ function RMCodeLoader(){
 				
 		_loaderOverlay = document.createElement('DIV');		
 		_loaderOverlay.className = 'rm_loader_overlay rm_ignore';
-		_loaderOverlay.style.cssText = 'width:100%; height:100%; position:fixed; top:0px; left:0px; right:0px; display:none; opacity: .80; filter: alpha(opacity=80);';
+		_loaderOverlay.style.cssText = 'width:100%; height:100%; position:fixed; top:0px; left:0px; right:0px; display:none; opacity: .90; filter: alpha(opacity=90);';
 		_loaderOverlay.style.cssText+="background-color: #555555;background-image: -moz-linear-gradient(center top, #333333, #000000);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #333333), color-stop(1, #000000));background-image: linear-gradient(top, #333333, #000000);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#333333', EndColorStr = '#000000');background-repeat: no-repeat;"
 		_loaderOverlay.style.padding = "20px"
 		_loaderOverlay.style.zIndex = 2147009001;
@@ -50,7 +50,7 @@ function RMCodeLoader(){
 			
 		
 		_loaderProgressContainer = document.createElement("DIV");
-		_loaderProgressContainer.style.cssText = 'width:300px;overflow:hidden;padding:2px;background: #444;border: 1px solid #000;margin-left: auto; margin-right: auto; margin-top:200px;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;';
+		_loaderProgressContainer.style.cssText = 'width:300px;overflow:hidden;padding:2px;background: #444;border: 2px solid #222;margin-left: auto; margin-right: auto; margin-top:200px;-moz-border-radius: 6px;-webkit-border-radius: 6px;border-radius: 6px;';
 		_loaderProgressContainer.style.cssText+="background-color: #FFF;background-image: -moz-linear-gradient(center top, #CCC, #FFF);background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCC), color-stop(1, #FFF));background-image: linear-gradient(top, #CCC, #FFF);filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#CCC', EndColorStr = '#FFF');background-repeat: no-repeat;"
 		_loaderOverlay.appendChild(_loaderProgressContainer);
 		
