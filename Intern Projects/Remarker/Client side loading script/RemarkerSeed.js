@@ -112,12 +112,20 @@ function RMCodeLoader(){
 	
 	}
 	
+	//increase the loading percentage and once done launch the afterLoad method
 	function incPercent(){
 		_loaderPercent += Math.ceil(100 / _itemsToLoad);
 		_loaderStatus.innerHTML = 'Loading Remarker Javascript '+_loaderPercent+'%';
 		if(_loaderPercent>=100){
-			remarker = 100000;
-		}
+			afterLoad();			
+		}	
+	}
+	
+	//create all the objects here.
+	function afterLoad(){
+		remarker = 100000;
+	
+	
 	
 	}
 	
