@@ -1,5 +1,5 @@
 
-var globalCodeLocation = "C:/Program Files/Git/Github Projects/sandbox/Intern Projects/Remarker";
+var globalCodeLocation = "file:///C:/Program Files/Git/Github Projects/sandbox/Intern Projects/Remarker";
 
 function RMCodeLoader(){
 
@@ -92,7 +92,6 @@ function RMCodeLoader(){
 		script.onload = script.onreadystatechange = function(){
 				if( !done && ( !this.readyState || this.readyState == "loaded" || this.readyState == "complete") ){
 						done = true;
-						//console.log('Loaded JS from: ' + url);	
 						callback();						
 						script.onload = script.onreadystatechange = null;
 						head.removeChild( script );
@@ -131,18 +130,20 @@ function RMCodeLoader(){
 	function loadAllTheCode(){
 		includeCSS(globalCodeLocation + '/css/remarkerStyles.css',function(){});
 		_itemsToLoad = 4;
-		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent()});
-		includeJS(globalCodeLocation + '/js/remarkerMain.js',function(){incPercent()});
-		includeJS(globalCodeLocation + '/js/remarkerLogin.js',function(){incPercent()});
-		includeJS(globalCodeLocation + '/js/remarkerOverlay.js',function(){incPercent()});
+		
+		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent();});
+		includeJS(globalCodeLocation + '/js/remarkerLogin.js', function(){incPercent();});
+		includeJS(globalCodeLocation + '/js/remarkerOverlay.js', function(){incPercent();});		
+		includeJS(globalCodeLocation + '/js/remarkerMain.js', function(){incPercent();});
+		
 		
 	}
 	
 	//increase the loading percentage and once done launch the afterLoad method
 	function incPercent(){
-		_loaderPercent += Math.ceil(100 / _itemsToLoad);
+		_loaderPercent += Math.ceil(100 / _itemsToLoad);		
 		_loaderStatus.innerHTML = 'Loading Remarker '+_loaderPercent+'%';
-		_loaderProgressBar.style.width = "" + (_loaderPercent*3)-12 + "px"
+		_loaderProgressBar.style.width = "" + ((_loaderPercent*3)-12) + "px"
 		if(_loaderPercent>=100){
 			setTimeout("rmCodeLoader.afterLoad()",200);			
 		}	
