@@ -46,7 +46,7 @@ function RMSideBar(){
 			'<div class="checkBox"><input type="checkbox" name="impBox" value="Important" /><span> Important! </span><span class="g">(Fix this ASAP!) </span></div>'+
 			'</div>'+
 			'<div class="filterBar"><p>Attach an Element:</p></div><div id="optionsC" class="contentBox" style="overflow: hidden">'+
-			'<span> No element selected. </span></div>'+
+			'<a id="rm_chooseElementButton"></a><span style="float:left;padding-top:6px"> No element selected. </span></div>'+
 			'</div>'+
 			'<div class="createBar"><input id="addButton" class="greenButton" type="button" value="Save" onclick=""></div>';	
 	

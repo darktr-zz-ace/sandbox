@@ -398,9 +398,9 @@ div.rm_sideBar{
 
 }
 
-.rm_sideBar .checkBox span{
+.rm_sideBar  span{
 	vertical-align: middle;
-	padding:left:3px;
+	padding:3px;
 }
 
 .rm_sideBar .checkBox .g{
@@ -409,6 +409,18 @@ div.rm_sideBar{
 	font-style: italic;
 	
 
+
+}
+
+#rm_chooseElementButton{
+	width: 30px;
+	height: 30px;
+	background-color: #dddddd;
+	float: left;
+}
+
+#rm_chooseElementButton.down{
+	background-color: #000000;
 
 }
 
