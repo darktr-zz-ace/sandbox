@@ -403,5 +403,14 @@ div.rm_sideBar{
 	padding:left:3px;
 }
 
+.rm_sideBar .checkBox .g{
+	color: #999999;
+		font: normal 10px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	font-style: italic;
+	
+
+
+}
+
 
 /* //////////// NEW EDIT BAR - END //////////// */
