@@ -39,7 +39,22 @@ function RMSideBar(){
 	}
 	
 	function newEditHTML(){
-	return '<div class="createBar"><input id="addButton" class="greenButton" type="button" value="Save" onclick=""></div>';	
+	return '<div class="filterBar"><p>Add a new tag:</p></div><textarea id="rm_tagContent" name="tagContent"></textarea>'+
+			'<div class="filterBar"><p>Mark As:</p></div><div id="optionsC" class="contentBox" style="overflow: hidden">'+
+			'<div class="checkBox"><input type="checkbox" name="bugBox" value="Bug" /><span> Bug </span></div>'+
+			'<div class="checkBox"><input type="checkbox" name="impBox" value="Important" /><span> Important! </span></div>'+
+			'<div class="checkBox"><input type="checkbox" name="desBox" value="Design" /><span> Design Issue </span></div>'+
+			'</div>'+
+			'<div class="createBar"><input id="addButton" class="greenButton" type="button" value="Save" onclick=""></div>';	
+	
+			
+	
+	
+	
+	
+	
+	
+	
 	}
 	
 	

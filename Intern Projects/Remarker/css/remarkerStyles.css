@@ -256,6 +256,16 @@ div.rm_sideBar{
 	
 }
 
+.rm_sideBar .filterBar p{
+
+	color: #CCFFCC;
+	font: bold 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	padding-top: 5px;
+	padding-left: 5px;
+	text-shadow: 0 -1px 0 #555555;
+
+}
+
 .rm_sideBar  a.filterButton{
 	height: 25px;
 	width:25px;
@@ -326,6 +336,72 @@ div.rm_sideBar{
 	margin-top: 2px;	
 }
 
+.rm_sideBar #rm_tagContent{
+	width: 290px;
+	height: 200px;
+	margin-left: 5px;
+	background-color: #FFFFFF;
+	border: 1px inset;
+	padding: 5px;
+	outline: none;
+	text-shadow: 0px 1px 0px #ffffff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #717171;
+	box-sizing: border-box;	
+
+}
+
+.rm_sideBar #rm_tagContent:focus{
+    -webkit-box-shadow: 0px 0px 5px #00ff00;
+	-moz-box-shadow: 0px 0px 5px #00ff00;
+	box-shadow: 0px 0px 5px #00ff00;
+	outline: none;
+
+}
+
+.rm_sideBar .contentBox{
+	width: 290px;
+	margin-left: 5px;
+	background-color: #FFFFFF;
+	border: 1px inset;
+	padding: 5px;
+	outline: none;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	border: 1px solid #717171;
+	box-sizing: border-box;	
+
+
+
+}
+
+.rm_sideBar .checkBox{
+	width: 290;
+	height: 25px;
+	
+	color: #222222;
+	font: bold 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	padding: 5px;
+	margin-left:5px;
+	margin-top:3px;
+
+
+}
+
+.rm_sideBar .checkBox input{
+	
+	vertical-align:middle;
+
+
+}
+
+.rm_sideBar .checkBox span{
+	vertical-align: middle;
+	padding:left:3px;
+}
 
 
 /* //////////// NEW EDIT BAR - END //////////// */
