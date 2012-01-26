@@ -1,5 +1,13 @@
 /* Remarker CSS */
 
+height{
+	height:100%;
+}
+
+body{
+	height:100%;
+}
+
 .rm_r{
 	margin: 0;
 	padding: 0px;
@@ -67,7 +75,7 @@ div.rm_popup{
 	font-family: arial,sans-serif;	
 }
 
-/* //////////////////////// */
+/* ////////////LOGIN BOX//////////// */
 
 #logintable{	
 	width: 250px;
@@ -124,13 +132,16 @@ div.rm_popup{
 
 }
 
-
 #loginbtn{
+	width:100%;
+	height: 45px;
+	margin-top: 15px;
+
+}
+
+.greenButton{
 	margin:0;
 	padding:0;
-	height: 45px;
-	width: 100%;
-	margin-top: 15px;
     background-color: #7fbf4d;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#7fbf4d), to(#63a62f));
     /* Saf4+, Chrome */
@@ -161,7 +172,7 @@ div.rm_popup{
 	
 } 
 
-#loginbtn:hover {
+.greenButton:hover {
     background-color: #76b347;
     background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
     /* Saf4+, Chrome */
@@ -177,11 +188,131 @@ div.rm_popup{
     box-shadow: inset 0 1px 0 0 #8dbf67;
     cursor: pointer; }
     
-#loginbtn:active {
+.greenButton:active {
     border: 1px solid #5b992b;
     border-bottom: 1px solid #538c27;
     -webkit-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
     -moz-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
     -ms-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
     -o-box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee;
-    box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; }
+    box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; 
+}
+
+/* ////////////LOGIN BOX - END //////////// */
+
+/* ////////////SIDE BAR -START //////////// */
+
+div.rm_sideBar{
+	width: 300px;
+	height: 100%;
+	background-color:#272727;	
+	position:fixed;
+	top:0px;
+}
+
+.rm_sideBar .headerBar{
+	width: 100%;
+	height: 40px;
+	background-color: #76b347;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -moz-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -ms-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -o-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: linear-gradient(top, #76b347, #5e9e2e);
+}
+
+.rm_sideBar  #flipButton{
+	height: 40px;
+	float:right;
+	width:40px;
+	background-color:#363;	
+}
+
+.rm_sideBar  #flipButton:hover{
+	background-color: #0F6;		
+}
+
+.rm_sideBar  .filterBar{
+	width: 100%;
+	height: 25px;
+	background-color: #161616;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#161616), to(#272727));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #161616, #272727);
+    background-image: -moz-linear-gradient(top, #161616, #272727);
+    background-image: -ms-linear-gradient(top, #161616, #272727);
+    background-image: -o-linear-gradient(top, #161616, #272727);
+    background-image: linear-gradient(top, #161616, #272727);
+	
+}
+
+.rm_sideBar  a.filterButton{
+	height: 25px;
+	width:25px;
+	background-color:#993;	
+	float:right;
+	
+}
+
+.rm_sideBar  a.filterButton:hover{
+	background-color:#3FF;	
+	
+}
+
+.rm_sideBar  a.sortButton{
+	height: 25px;
+	width:30px;
+	background-color:#3F3;	
+	float:right;	
+}
+
+.rm_sideBar  a.sortButton:hover{
+	background-color:#C63;	
+}
+
+
+.rm_sideBar  .innerContent{
+	width: 294px;
+	height: 200px;
+	background-color:#FFF;
+	margin-left: 3px;
+	overflow-y:scroll;
+	
+	
+}
+
+.rm_sideBar  .createBar{
+	width: 100%;
+	height: 50px;
+	background-color: #272727;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#272727), to(#161616));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #272727, #161616);
+    background-image: -moz-linear-gradient(top, #272727, #161616);
+    background-image: -ms-linear-gradient(top, #272727, #161616);
+    background-image: -o-linear-gradient(top, #272727, #161616);
+    background-image: linear-gradient(top, #272727, #161616);
+	position:absolute;
+	bottom:0;
+	
+}
+
+.rm_sideBar  #createButton{	
+	width: 296px;
+	height: 46px;
+	margin-left: 2px;
+	margin-top: 2px;	
+}
+
+
+
+
+
+
+
+
+
+
+/* ////////////SIDE BAR - END ////////////// */
