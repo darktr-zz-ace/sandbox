@@ -1,7 +1,9 @@
 function RMSideBar(){
 
 	var _sideBar;
+	var _innerHt;
 	var _onside = 0;
+	var _mode = 0; //0 - list 1 - newtag
 
 
 	function create(){
@@ -9,25 +11,59 @@ function RMSideBar(){
 		_sideBar = document.createElement('DIV');
 		_sideBar.className = 'rm_r rm_sideBar';
 		_sideBar.id = 'rm_sideBarObj';
-		_sideBar.innerHTML = sideBarHtml();
+		_sideBar.innerHTML = '<div class="headerBar"><a id="flipButton" class="rmOnLeft" title="flip"></a></div><div id="innerH"></div>';
+		 	 
 		_sideBar.style.display = 'none';
 		_sideBar.style.left = '0px';
 		document.body.appendChild(_sideBar);
+		_innerHt = document.getElementById('innerH');
+		 _innerHt.innerHTML = normalHTML();	
 		jQuery("#flipButton").click(flip);
+		jQuery("#createButton").click(SwitchModes);
 		updateSize();
 		jQuery(_sideBar).show(300);
-		
+		_mode = 0;
+		jQuery(window).resize(updateSize);
 		
 	}
 	
-	function sideBarHtml(){
-		return '<div class="headerBar"><a id="flipButton" class="rmOnLeft" title="flip"></a></div>'+
-		'<div class="filterBar"><a id="sortTimeButton" class="sortButton" title="Sort by time"></a>'+
+	
+	
+	
+	
+	function normalHTML(){
+	return '<div class="filterBar"><a id="sortTimeButton" class="sortButton" title="Sort by time"></a>'+
 		'<a id="doneButton" class="filterButton" title="Filter by done."></a><a id="designButton" class="filterButton" title="Filter by design.">'+
 		'</a><a id="impButton" class="filterButton" title="Filter by important."></a><a id="bugButton" class="filterButton" title="Filter by bugs."></a></div>'+
-		'<div id="innerC" class="innerContent"></div><div class="createBar"><input id="createButton" class="greenButton" type="button" value="Add Tag" onclick=""></div>';
-	
+		'<div id="innerC" class="innerContent"></div><div class="createBar"><input id="createButton" class="greenButton" type="button" value="Add Tag" onclick=""></div>';	
 	}
+	
+	function newEditHTML(){
+	return '<div class="createBar"><input id="addButton" class="greenButton" type="button" value="Save" onclick=""></div>';	
+	}
+	
+	
+	function SwitchModes(){
+		
+		var ne = jQuery(_innerHt);
+		ne.hide(100);
+		if(_mode == 0){
+		
+		_innerHt.innerHTML = newEditHTML();
+		jQuery("#addButton").click(SwitchModes);
+		_mode = 1;
+		}else{
+		
+		_innerHt.innerHTML = normalHTML();
+		jQuery("#createButton").click(SwitchModes);
+		_mode = 0;
+		}
+				
+		ne.show(100);
+		updateSize();
+	}
+	
+	
 	
 	function flip(){
 		var sO = jQuery('#rm_sideBarObj');
@@ -76,9 +112,16 @@ function RMSideBar(){
 		
 		var iC = jQuery('#innerC');
 		var newH = (window.innerHeight-115) + "px";
-		iC.animate({height: newH},100);	
+		iC.animate({height: newH},0);	
 	}
 	
+	function hide(){
+		jQuery(_sideBar).hide(100);
+	}
+	
+	function show(){
+		jQuery(_sideBar).show(100);
+	}
 	
 	function destroy(){
 	
@@ -90,7 +133,7 @@ function RMSideBar(){
 
 	create();
 
-
+	
 
 
 
