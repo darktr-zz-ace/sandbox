@@ -5,13 +5,6 @@
 		if the login is correct:
 		create all the required objects
 		wait for user interaction
-	
-	
-
-
-
-
-
 */
 
 
@@ -23,10 +16,12 @@ function RemarkerMain(){
 	var rm_login;
 	var rm_sidebar;
 	var rm_user;
+	var rm_comms;
 	
 	function startUp(){
 		jQuery.noConflict();  //make sure $ is ours to play with. But use jQuery mostly anyway.
-		scrubPage();	
+		scrubPage();
+		rm_comms = new RMComms();
 		rm_login = new RemarkerLogin(afterLogin);
 	}
 	
@@ -42,6 +37,7 @@ function RemarkerMain(){
 	
 	function afterLogin(loginData){
 		
+	
 		rm_user = new RMUserData(loginData);
 		rm_sideBar = new RMSideBar();
 	
@@ -53,8 +49,8 @@ function RemarkerMain(){
 	return{
 		rm_login : rm_login,
 		rm_sidebar : rm_sidebar,
-		rm_user : rm_user
-	
+		rm_user : rm_user,
+		rm_comms : rm_comms
 	
 	
 	

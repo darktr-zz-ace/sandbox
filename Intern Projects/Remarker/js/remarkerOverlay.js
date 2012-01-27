@@ -7,7 +7,7 @@ function remarkerOverlay(withPopup){
 		_overlay = document.createElement('DIV');		
 		_overlay.className = 'rm_r rm_loader_overlay';
 		_overlay.style.padding = "20px";
-		_overlay.style.zIndex = 2147099101;
+		_overlay.style.zIndex = 2147099901;
 		_overlay.style.display = "block";
 		document.body.appendChild(_overlay);
 
@@ -15,7 +15,7 @@ function remarkerOverlay(withPopup){
 		
 			_popup = document.createElement('DIV');
 			_popup.className = 'rm_r rm_popup';
-			_popup.style.zIndex = 2147099102;
+			_popup.style.zIndex = 2147099902;
 			_popup.style.display = "block";
 			document.body.appendChild(_popup);	
 		

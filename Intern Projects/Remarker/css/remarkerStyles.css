@@ -226,21 +226,25 @@ div.rm_sideBar{
 .rm_sideBar  #flipButton{
 	height: 40px;
 	float:right;
-	width:40px;
+	width:49px;
 	
 }
 .rmOnLeft{
-	background-image:url(../images/flipRight.png);
+	background-image:url(../images/arrowRight.png);
 }
-
 
 .rmOnRight{
-	background-image:url(../images/flipLeft.png);
+	background-image:url(../images/arrowLeft.png);
 }
 
-.rm_sideBar  #flipButton:hover{
-	background-color: #0F6;		
+.rmOnLeft:hover{
+	background-image:url(../images/arrowRightOver.png);
 }
+
+.rmOnRight:hover{
+	background-image:url(../images/arrowLeftOver.png);
+}
+
 
 .rm_sideBar  .filterBar{
 	width: 100%;
@@ -350,7 +354,7 @@ div.rm_sideBar{
 	border-radius: 3px;
 	border: 1px solid #717171;
 	box-sizing: border-box;	
-
+	resize: none;
 }
 
 .rm_sideBar #rm_tagContent:focus{
@@ -373,7 +377,7 @@ div.rm_sideBar{
 	border-radius: 3px;
 	border: 1px solid #717171;
 	box-sizing: border-box;	
-
+	
 
 
 }
@@ -405,7 +409,7 @@ div.rm_sideBar{
 
 .rm_sideBar .checkBox .g{
 	color: #999999;
-		font: normal 10px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	font: normal 10px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
 	font-style: italic;
 	
 
@@ -413,16 +417,69 @@ div.rm_sideBar{
 }
 
 #rm_chooseElementButton{
-	width: 30px;
-	height: 30px;
-	background-color: #dddddd;
+	width: 34px;
+	height: 34px;
+	background-image:url(../images/selEBtn.png);
 	float: left;
 }
 
 #rm_chooseElementButton.down{
-	background-color: #000000;
+	background-image:url(../images/selEBtnDown.png);
 
 }
 
+#rm_unchooseElementButton{
+	width: 22px;
+	height: 22px;
+	background-image:url(../images/miniX.png);
+	float: right;
+
+}
+
+#rmXPspan{
+	color: #999999;
+	font: normal 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	font-style: italic;
+	
+}
+
+
 
 /* //////////// NEW EDIT BAR - END //////////// */
+
+
+.rm_hlbox{
+	margin: 0;
+	padding: 0px;
+	border: 0;
+	font-size: 100%;
+	font-family: arial,sans-serif;
+	vertical-align: baseline;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	border: 1px solid #003;
+	width: 10px;
+	height: 10px;	
+	pointer-events: none;
+	background-color: #09C;
+	opacity: 0.4;
+}
+
+.rm_clickBox {
+	margin: 0;
+	padding: 0px;
+	border: 0;
+	font-size: 100%;
+	font-family: arial,sans-serif;
+	vertical-align: baseline;
+	position:absolute;
+	top:0px;
+	left:0px;
+	border:1px solid #003;
+	width: 10px;
+	height: 10px;	
+	pointer-events: none;
+	background-color:#C00;
+	opacity:0.4;
+}

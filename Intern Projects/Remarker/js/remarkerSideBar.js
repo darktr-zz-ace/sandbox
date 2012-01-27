@@ -4,15 +4,16 @@ function RMSideBar(){
 	var _innerHt;
 	var _onside = 0;
 	var _mode = 0; //0 - list 1 - newtag
-
+	var _eSelectMode = false;
+	var _rmtagger;
 
 	function create(){
 	
 		_sideBar = document.createElement('DIV');
 		_sideBar.className = 'rm_r rm_sideBar';
 		_sideBar.id = 'rm_sideBarObj';
-		_sideBar.innerHTML = '<div class="headerBar"><a id="flipButton" class="rmOnLeft" title="flip"></a></div><div id="innerH"></div>';
-		 	 
+		_sideBar.innerHTML = '<div class="rm_r headerBar"><a id="flipButton" class="rm_r rmOnLeft" title="flip"></a></div><div id="innerH" class="rm_r"></div>';
+		_sideBar.style.zIndex = 2147099801;
 		_sideBar.style.display = 'none';
 		_sideBar.style.left = '0px';
 		document.body.appendChild(_sideBar);
@@ -27,48 +28,74 @@ function RMSideBar(){
 		
 	}
 	
+	function toggleSelectElement(){
+		jQuery("#rm_chooseElementButton").toggleClass("down");
+		if(!_eSelectMode){
+			_eSelectMode = true;
+			_rmtagger = new RMETagger(selectElement);			
+		}else{
+			_rmtagger.destroy();
+			_eSelectMode = false;
+		}
 	
+	}
+	
+	function selectElement(xp){
+	
+		document.getElementById("rmXPspan").innerHTML = xp;
+		jQuery('#rmXPspan').css('color','#000000');
+		jQuery('#rmXPspan').css('fontStyle','normal');
+		jQuery("#rm_unchooseElementButton").show();
+		_rmtagger.destroy();
+		_eSelectMode = false;
+		jQuery("#rm_chooseElementButton").removeClass("down");
+	
+	}
+	
+	function unSelectElement(){
+		document.getElementById("rmXPspan").innerHTML = 'No element selected.';
+		jQuery('#rmXPspan').css('color','#999999');
+		jQuery('#rmXPspan').css('fontStyle','italic');
+		jQuery("#rm_unchooseElementButton").hide();
+	}
 	
 	
 	
 	function normalHTML(){
-	return '<div class="filterBar"><a id="sortTimeButton" class="sortButton" title="Sort by time"></a>'+
-		'<a id="doneButton" class="filterButton" title="Filter by done."></a><a id="designButton" class="filterButton" title="Filter by design.">'+
-		'</a><a id="impButton" class="filterButton" title="Filter by important."></a><a id="bugButton" class="filterButton" title="Filter by bugs."></a></div>'+
-		'<div id="innerC" class="innerContent"></div><div class="createBar"><input id="createButton" class="greenButton" type="button" value="Add Tag" onclick=""></div>';	
+	return '<div class="rm_r filterBar"><a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
+		'<a id="doneButton" class="rm_r  filterButton" title="Filter by done."></a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
+		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a></div>'+
+		'<div id="innerC" class="rm_r  innerContent"></div><div class=" rm_r createBar"><input id="createButton" class="rm_r greenButton" type="button" value="Add Tag" onclick=""></div>';	
 	}
 	
 	function newEditHTML(){
-	return '<div class="filterBar"><p>Add a new tag:</p></div><textarea id="rm_tagContent" name="tagContent"></textarea>'+
-			'<div class="filterBar"><p>Mark As:</p></div><div id="optionsC" class="contentBox" style="overflow: hidden">'+
-			'<div class="checkBox"><input type="checkbox" name="bugBox" value="Bug" /><span> Bug </span><span class="g">(Something doesn\'t work right!) </span></div>'+
-			'<div class="checkBox"><input type="checkbox" name="desBox" value="Design" /><span> Design Issue </span><span class="g">(Something doesn\'t look right.) </span></div>'+
-			'<div class="checkBox"><input type="checkbox" name="impBox" value="Important" /><span> Important! </span><span class="g">(Fix this ASAP!) </span></div>'+
+	return '<div class="rm_r filterBar"><p class="rm_r">Add a new tag:</p></div><textarea id="rm_tagContent" class="rm_r" name="tagContent"></textarea>'+
+			'<div class="rm_r filterBar"><p class="rm_r">Mark As:</p></div><div id="optionsC" class="rm_r  contentBox" style="overflow: hidden">'+
+			'<div class="rm_r checkBox"><input id="bugBox" type="checkbox" name="bugBox" value="Bug" /><span class="rm_r"> Bug </span><span class="rm_r g">(Something doesn\'t work right!) </span></div>'+
+			'<div class="rm_r checkBox"><input id="desBox" type="checkbox" name="desBox" value="Design" /><span class="rm_r"> Design Issue </span><span class="rm_r g">(Something doesn\'t look right.) </span></div>'+
+			'<div class="rm_r checkBox"><input id="impBox" type="checkbox" name="impBox" value="Important" /><span class="rm_r"> Important! </span><span class="rm_r g">(Fix this ASAP!) </span></div>'+
 			'</div>'+
-			'<div class="filterBar"><p>Attach an Element:</p></div><div id="optionsC" class="contentBox" style="overflow: hidden">'+
-			'<a id="rm_chooseElementButton"></a><span style="float:left;padding-top:6px"> No element selected. </span></div>'+
+			'<div class="rm_r filterBar"><p class="rm_r">Attach an Element:</p></div><div id="optionsC" class="rm_r contentBox" style="overflow: hidden">'+
+			'<a id="rm_chooseElementButton" class="rm_r"></a><span id="rmXPspan" class="rm_r" style="float:left;padding-top:6px"> No element selected. </span><a id="rm_unchooseElementButton" class="rm_r" style="display:none"></a></div>'+
 			'</div>'+
-			'<div class="createBar"><input id="addButton" class="greenButton" type="button" value="Save" onclick=""></div>';	
-	
-			
-	
-	
-	
-	
-	
-	
+			'<div class="rm_r createBar"><input id="addButton" class="rm_r greenButton" type="button" value="Save" onclick=""></div>';		
 	
 	}
 	
 	
 	function SwitchModes(){
 		
+		if(_eSelectMode)return;
+		
 		var ne = jQuery(_innerHt);
 		ne.hide(100);
 		if(_mode == 0){
 		
 		_innerHt.innerHTML = newEditHTML();
-		jQuery("#addButton").click(SwitchModes);
+		jQuery("#addButton").click(sendTag);
+		jQuery("#rm_chooseElementButton").click(toggleSelectElement);
+		jQuery("#rm_unchooseElementButton").click(unSelectElement);
+		
 		_mode = 1;
 		}else{
 		
@@ -79,6 +106,12 @@ function RMSideBar(){
 				
 		ne.show(100);
 		updateSize();
+	}
+	
+	function sendTag(){
+	
+		remarker.rm_comms.send('http://192.168.1.8:8080/remarker/tag/newTag?u=hello');
+	
 	}
 	
 	
