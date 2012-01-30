@@ -272,16 +272,29 @@ div.rm_sideBar{
 
 .rm_sideBar  a.filterButton{
 	height: 25px;
-	width:25px;
-	background-color:#993;	
+	width:27px;
+	background-position: top left;	
 	
 	float:right;
 	
 }
 
 .rm_sideBar  a.filterButton:hover{
-	background-color:#3FF;	
+	background-position: bottom right;	
 	
+}
+
+#designButton{
+	background-image:url(../images/designBtn.png);
+}
+#bugButton{
+	background-image:url(../images/bugBtn.png);
+}
+#doneButton{
+	background-image:url(../images/doneBtn.png);
+}
+#impButton{
+	background-image:url(../images/impBtn.png);
 }
 
 .rm_sideBar  a.sortButton{
