@@ -31,6 +31,7 @@ function RMSideBar(){
 		_clickBox = new RMBox("background-color: #C90; border: 1px solid #300;");
 		_tagList = new RMTagList();
 		_tagList.getFromServer();
+		
 	}
 	
 	function toggleSelectElement(){
@@ -68,7 +69,8 @@ function RMSideBar(){
 	
 	
 	function normalHTML(){
-	return '<div class="rm_r filterBar"><a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
+	return '<div class="rm_r filterBar">'+
+		//'<a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
 		'<a id="doneButton" class="rm_r  filterButton" title="Filter by done."></a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
 		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a></div>'+
 		'<div id="innerC" class="rm_r  innerContent"></div><div class=" rm_r createBar"><input id="createButton" class="rm_r greenButton" type="button" value="Add Tag" onclick=""></div>';	
@@ -82,7 +84,7 @@ function RMSideBar(){
 			'<div class="rm_r checkBox"><input id="impBox" type="checkbox" name="impBox" value="Important" /><span class="rm_r"> Important! </span><span class="rm_r g">(Fix this ASAP!) </span></div>'+
 			'</div>'+
 			'<div class="rm_r filterBar"><p class="rm_r">Attach an Element:</p></div><div id="optionsC" class="rm_r contentBox" style="overflow: hidden">'+
-			'<a id="rm_chooseElementButton" class="rm_r"></a><span id="rmXPspan" class="rm_r" style="float:left;padding-top:6px"> No element selected. </span><a id="rm_unchooseElementButton" class="rm_r" style="display:none"></a></div>'+
+			'<a id="rm_chooseElementButton" class="rm_r"></a><span id="rmXPspan" class="rm_r" style="float:left;padding-top:6px">No element selected.</span><a id="rm_unchooseElementButton" class="rm_r" style="display:none"></a></div>'+
 			'</div>'+
 			'<div class="rm_r createBar"><input id="addButton" class="rm_r greenButton" type="button" value="Save" onclick=""><input id="backButton" class="rm_r redButton" type="button" value="Back" onclick=""></div>';		
 	
@@ -120,14 +122,31 @@ function RMSideBar(){
 		var bug = (jQuery('#bugBox:checked').val() !== undefined);
 		var des = (jQuery('#desBox:checked').val() !== undefined);
 		var imp = (jQuery('#impBox:checked').val() !== undefined);
-		var ele = document.getElementById("rmXPspan").innerHTML;
-		if(ele == ' No element selected. ')ele='';
-		var content = escape(jQuery('#rm_tagContent').attr('value'));
+		var ele = escape(document.getElementById("rmXPspan").innerHTML);
+		if(ele.substring(0,1)=='N')ele='';
+		var content = (jQuery('#rm_tagContent').attr('value'));
+		content = content.replace("\n"," ");
+		
+		
+		
 		var user = remarker.rm_user.username;
-		var loc = remarker.rm_user.url;
+		var loc = escape(remarker.rm_user.url);
 		var binfo = remarker.rm_user.browserInfo.stringo;		
-		var url='http://192.168.1.8:8080/newRemarker/tag/save?content='+content+'&username='+user+'&url='+loc+'&xpath='+ele+'&browserInfo='+binfo+'&design='+des+'&bug='+bug+'&important='+imp
-		remarker.rm_comms.send(url);	
+		var url='http://192.168.1.8:8080/newRemarker/tag/remoteSave?content='+content+'&username='+user+'&url='+loc+'&xpath='+ele+'&browserInfo='+binfo+'&design='+des+'&bug='+bug+'&important='+imp
+		remarker.rm_comms.send(url,tagAddResult);	
+		
+		
+		
+	}
+	
+	function tagAddResult(j){
+		
+		
+		
+		_tagList.tagsFromServer(j);
+		SwitchModes();
+		
+	
 	}
 	
 	

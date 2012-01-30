@@ -1,4 +1,4 @@
-function RMTag(user, content, time, bug, design, important, xpath, done){
+function RMTag(user, content, time, bug, design, important, xpath, done, version){
 		
 	var _user = user;
 	var _content = content;
@@ -8,6 +8,7 @@ function RMTag(user, content, time, bug, design, important, xpath, done){
 	var _important = important;
 	var _xpath = xpath;
 	var _done = done;
+	var _version = version;
 	
 	return {
 		
@@ -18,7 +19,8 @@ function RMTag(user, content, time, bug, design, important, xpath, done){
 		_design : _design,
 		_important : _important,
 		_xpath : _xpath,
-		_done : _done
+		_done : _done,
+		_version : _version
 	
 	}
 

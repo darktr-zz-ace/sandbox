@@ -578,15 +578,62 @@ div.rm_sideBar{
 
 .rmtagContent{
 	background-color: #ffffff;
-	width: 98%;
+	width: 96%;
 	margin-left:1%;
 	margin-bottom:5px;
 	border-left: 1px solid #878787;
 	border-right: 1px solid #878787;
 	border-bottom: 1px solid #878787;
-	
-	height: 100px;	
+	padding:1%;
 	
 }
+
+.rmcenterT{
+	
+	color:#ffffff;
+	font: normal 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	margin-left:10px;
+	margin-top:4px;
+	text-shadow: 0 0 4px #555555;
+}
+.rmTagTypeDiv{
+	width:100%;
+	height: 22px;
+	margin-top:3px;
+
+}
+.rmTagTypeLabel{	
+	float:right;
+	width:20px;
+	height: 20px;
+	background-color: #dddddd;
+	margin:1px;
+}
+
+.rmTTLB{
+	background-image:url(../images/miniBug.png);
+}
+.rmTTLD{
+	background-image:url(../images/miniBrush.png);
+}
+.rmTTLI{
+	background-image:url(../images/miniImp.png);
+}
+.rmTTLT{
+	background-image:url(../images/miniTick.png);
+}
+
+a.rmTTarget{
+
+	float:left;
+	width:20px;
+	height: 20px;
+	background-color: #ff0000;
+	margin:1px;
+	background-image:url(../images/miniTarget.png);
+
+
+}
+
 
 /*//////////////////////////////*/

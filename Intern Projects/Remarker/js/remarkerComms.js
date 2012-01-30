@@ -7,6 +7,7 @@ function RMComms(){
 	var waiting = false;
 	var waitingO;
 	var actionCallBack;
+	var pop;
 	/*
 	
 	Page looks something like: "handlePacket('{json here}');"
@@ -14,26 +15,25 @@ function RMComms(){
 	*/
 	
 	function handlePacket(dataString){
-		console.log('got data');
 		waiting = false;
-		//console.log(dataString);
 		
 		var json = jQuery.parseJSON(dataString);	
 		
 		
 		if(waitingO)waitingO.destroy();
 		
-		actionCallBack(json);
+		actionCallBack(json,pop);
 		
 	
 	}
 	
 	//callback IS A STRING!!!!
-	function send(url,_actionCallBack){			
+	function send(url,_actionCallBack, _pop){			
 		if(waiting)return; //TODO: THROW ERRRORRRRR
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		actionCallBack = _actionCallBack;
+		pop = _pop;
 		script.className = "rm_src_in";
 		script.src = url;
 		var done = false;
