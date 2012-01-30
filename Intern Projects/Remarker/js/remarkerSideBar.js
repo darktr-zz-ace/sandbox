@@ -113,7 +113,16 @@ function RMSideBar(){
 	
 	function sendTag(){
 	
-		remarker.rm_comms.send('http://192.168.1.8:8080/remarker/tag/newTag?u=hello');
+		var bug = (jQuery('#bugBox:checked').val() !== undefined);
+		var des = (jQuery('#desBox:checked').val() !== undefined);
+		var imp = (jQuery('#impBox:checked').val() !== undefined);
+		var ele = document.getElementById("rmXPspan").innerHTML;
+		if(ele == ' No element selected. ')ele='';
+		var content = escape(jQuery('#rm_tagContent').attr('value'));
+		alert(bug + " " + des + " " + imp + " " + ele + " " + content);
+		
+	
+		//remarker.rm_comms.send('http://192.168.1.8:8080/remarker/tag/newTag?u=hello');
 	
 	}
 	
