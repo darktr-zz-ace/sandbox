@@ -78,12 +78,12 @@ div.rm_popup{
 /* ////////////LOGIN BOX//////////// */
 
 #logintable{	
-	width: 250px;
+	width: 300px;
 	font-family: arial,sans-serif;
 	margin: auto;
 	padding-top: 90px;
 	padding-bottom: 30px;
-	background-image:url(http://remarker.co.za/images/loginbg.png);
+	/*background-image:url(http://remarker.co.za/images/loginbg.png);*/
 	background-repeat:no-repeat;
 	border-collapse: separate;
 	color: #564B47;
@@ -110,7 +110,8 @@ div.rm_popup{
 	padding-top: 5px;
 }
 
-#rm_passEdit, #rm_userEdit{
+#rm_sessionEdit, #rm_userEdit{
+	color: #000000;
 	border: 1px inset;
 	height: 35px;
 	font-size: 16px;
@@ -124,12 +125,16 @@ div.rm_popup{
 	border: 1px solid #717171;
 	box-sizing: border-box;		
 }
-#rm_passEdit:focus, #rm_userEdit:focus{
+#rm_sessionEdit:focus, #rm_userEdit:focus{
     -webkit-box-shadow: 0px 0px 5px #007eff;
 	-moz-box-shadow: 0px 0px 5px #007eff;
 	box-shadow: 0px 0px 5px #007eff;
 	outline: none;
 
+}
+
+#rm_sessionEdit{
+	color: #444444;
 }
 
 #loginbtn{
@@ -369,10 +374,10 @@ div.rm_sideBar{
 
 
 .rm_sideBar  .innerContent{
-	width: 294px;
+	width: 98%;
 	height: 200px;
-	background-color:#FFF;
-	margin-left: 3px;
+	background-color:#e0e0e0;
+	margin-left: 1%;
 	overflow-y:scroll;
 	
 	
@@ -543,3 +548,45 @@ div.rm_sideBar{
 	pointer-events: none;
 	opacity:0.4;
 }
+
+
+/*//////////////*/
+
+.rmtagHeading{
+	width: 100%;
+	height: 25px;
+	background-color: #76b347;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#76b347), to(#5e9e2e));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -moz-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -ms-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: -o-linear-gradient(top, #76b347, #5e9e2e);
+    background-image: linear-gradient(top, #76b347, #5e9e2e);
+	
+}
+.rmtagHeading .rms1{
+	color:#ffffff;
+	font: normal 12px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	float:left;	
+}
+.rmtagHeading .rms2{
+	color:#bcd7a7;
+	font: normal 10px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+	float:right;	
+}
+
+.rmtagContent{
+	background-color: #ffffff;
+	width: 98%;
+	margin-left:1%;
+	margin-bottom:5px;
+	border-left: 1px solid #878787;
+	border-right: 1px solid #878787;
+	border-bottom: 1px solid #878787;
+	
+	height: 100px;	
+	
+}
+
+/*//////////////////////////////*/

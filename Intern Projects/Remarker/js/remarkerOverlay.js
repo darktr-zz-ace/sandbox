@@ -24,8 +24,10 @@ function remarkerOverlay(withPopup){
 	}
 	
 	function destroy(){	
-		_popup.style.display = "none";
-		_popup = null;		
+		if(_popup){
+			_popup.style.display = "none";
+			_popup = null;	
+		}			
 		_overlay.style.display = "none";
 		_overlay = null;	
 		

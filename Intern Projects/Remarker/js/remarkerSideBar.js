@@ -7,6 +7,8 @@ function RMSideBar(){
 	var _eSelectMode = false;
 	var _rmtagger;
 	var _clickBox;
+	
+	var _tagList;
 
 	function create(){
 	
@@ -27,6 +29,8 @@ function RMSideBar(){
 		_mode = 0;
 		jQuery(window).resize(updateSize);
 		_clickBox = new RMBox("background-color: #C90; border: 1px solid #300;");
+		_tagList = new RMTagList();
+		_tagList.getFromServer();
 	}
 	
 	function toggleSelectElement(){
@@ -104,6 +108,7 @@ function RMSideBar(){
 			if(_clickBox)_clickBox.hide();
 			_innerHt.innerHTML = normalHTML();
 			jQuery("#createButton").click(SwitchModes);
+			document.getElementById("innerC").innerHTML = _tagList.getAllTags();
 			_mode = 0;
 		}
 				
@@ -111,32 +116,29 @@ function RMSideBar(){
 		updateSize();
 	}
 	
-	function sendTag(){
-	
+	function sendTag(){	
 		var bug = (jQuery('#bugBox:checked').val() !== undefined);
 		var des = (jQuery('#desBox:checked').val() !== undefined);
 		var imp = (jQuery('#impBox:checked').val() !== undefined);
 		var ele = document.getElementById("rmXPspan").innerHTML;
 		if(ele == ' No element selected. ')ele='';
 		var content = escape(jQuery('#rm_tagContent').attr('value'));
-		alert(bug + " " + des + " " + imp + " " + ele + " " + content);
-		
-	
-		//remarker.rm_comms.send('http://192.168.1.8:8080/remarker/tag/newTag?u=hello');
-	
+		var user = remarker.rm_user.username;
+		var loc = remarker.rm_user.url;
+		var binfo = remarker.rm_user.browserInfo.stringo;		
+		var url='http://192.168.1.8:8080/newRemarker/tag/save?content='+content+'&username='+user+'&url='+loc+'&xpath='+ele+'&browserInfo='+binfo+'&design='+des+'&bug='+bug+'&important='+imp
+		remarker.rm_comms.send(url);	
 	}
 	
 	
-	
+	//flip side bar to other side
 	function flip(){
-		var sO = jQuery('#rm_sideBarObj');
-		
+		var sO = jQuery('#rm_sideBarObj');		
 		if(_onside == 0){
 			_onside = 1;
 		}else{
 			_onside = 0;
-		}		
-		
+		}				
 		jQuery("#flipButton").toggleClass("rmOnRight");
 		updateSize();
 	}
@@ -163,20 +165,17 @@ function RMSideBar(){
     }
 	
 	function updateSize(){
-		var sO = jQuery('#rm_sideBarObj');
-		
+		var sO = jQuery('#rm_sideBarObj');		
 		if(_onside== 1){
 			var newx = (viewSize().w-300) + "px";
 			sO.animate({left: newx},100);
 		}else{
 			sO.animate({left: '0px'},100);
-		}	
-		
+		}			
 		var iC = jQuery('#innerC');
 		var newH = (window.innerHeight-115) + "px";
 		iC.animate({height: newH},0);	
-	}
-	
+	}	
 	
 	function hide(){
 		jQuery(_sideBar).hide(100);
@@ -185,6 +184,13 @@ function RMSideBar(){
 	function show(){
 		jQuery(_sideBar).show(100);
 	}
+	
+	//TAG LIST FUNCTIONS
+	
+	
+	
+	
+	
 	
 	
 	create();

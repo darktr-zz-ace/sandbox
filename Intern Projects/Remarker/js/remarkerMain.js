@@ -22,6 +22,7 @@ function RemarkerMain(){
 		jQuery.noConflict();  //make sure $ is ours to play with. But use jQuery mostly anyway.
 		scrubPage();
 		rm_comms = new RMComms();
+		rm_user = new RMUserData();
 		rm_login = new RemarkerLogin(afterLogin);
 	}
 	
@@ -37,10 +38,10 @@ function RemarkerMain(){
 	
 	function afterLogin(loginData){
 		
-	
-		rm_user = new RMUserData(loginData);
+		
+		
 		rm_sideBar = new RMSideBar();
-	
+		
 	}
 	
 	

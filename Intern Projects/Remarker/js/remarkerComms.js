@@ -6,6 +6,7 @@ function RMComms(){
 	var reqIdCount = 0;
 	var waiting = false;
 	var waitingO;
+	var actionCallBack;
 	/*
 	
 	Page looks something like: "handlePacket('{json here}');"
@@ -13,32 +14,26 @@ function RMComms(){
 	*/
 	
 	function handlePacket(dataString){
+		console.log('got data');
 		waiting = false;
-		var json = jQuery.parseJSON(dataString);
-		console.log(dataString);
+		//console.log(dataString);
 		
-		var error = json.error;
-		if(!error){}else{
-		    
-		    rID = error.rID;    
-		    packetBuffer[rID] = 0;
-		    
-			var o = new remarkerOverlay(true);			
-		    o._popup.innerHTML=  '<p class="rm_er_head">FATAL ERROR</p>' +
-		                                                ''+ error.message + '' + 
-		                                                '<p class="rm_er_foot">Remarker cannot continue..</p>';
-		}
-		if(waitingO)waitingO.destroy;
+		var json = jQuery.parseJSON(dataString);	
 		
 		
+		if(waitingO)waitingO.destroy();
+		
+		actionCallBack(json);
 		
 	
 	}
 	
 	//callback IS A STRING!!!!
-	function send(url){			
+	function send(url,_actionCallBack){			
+		if(waiting)return; //TODO: THROW ERRRORRRRR
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
+		actionCallBack = _actionCallBack;
 		script.className = "rm_src_in";
 		script.src = url;
 		var done = false;
