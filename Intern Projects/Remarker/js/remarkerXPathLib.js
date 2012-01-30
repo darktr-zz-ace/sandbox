@@ -29,7 +29,7 @@ function getElementIdx(elt)
 //////////////////////////////
 
 
-function getElementsFromPath(xpath){	
+function getElementFromPath(xpath){	
 	var x_result = document.evaluate( ''+xpath+'', document, null, XPathResult.ANY_TYPE, null );
 	var firstE = x_result.iterateNext();
 	return firstE;	

@@ -129,7 +129,7 @@ function RMCodeLoader(){
 	//use include methods to pull javascript from server
 	function loadAllTheCode(){
 		includeCSS(globalCodeLocation + '/css/remarkerStyles.css',function(){});
-		_itemsToLoad = 9;
+		_itemsToLoad = 10;
 		
 		includeJS('http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js',function(){incPercent();});
 		includeJS(globalCodeLocation + '/js/remarkerLogin.js', function(){incPercent();});
@@ -140,6 +140,7 @@ function RMCodeLoader(){
 		includeJS(globalCodeLocation + '/js/remarkerETagger.js', function(){incPercent();});
 		includeJS(globalCodeLocation + '/js/remarkerXPathLib.js', function(){incPercent();});
 		includeJS(globalCodeLocation + '/js/remarkerComms.js', function(){incPercent();});
+		includeJS(globalCodeLocation + '/js/remarkerOBox.js', function(){incPercent();});
 		
 		
 	}

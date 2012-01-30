@@ -6,7 +6,7 @@ function RMETagger(callback){
 	var _chosenE;
 
 	function create(){		
-		createHLBox();
+		_hlbox = new RMBox("background-color: #09C; border: 1px solid #003;");
 		bindEvents();
 	}
 		
@@ -32,20 +32,10 @@ function RMETagger(callback){
 		jQuery(document.body).off('mousemove mouseenter mouseleave mouseover',moveHandler);			
 	}
 	
-	function createHLBox(){		
-		if(!_hlbox)_hlbox = document.createElement('DIV');
-		_hlbox.className = 'rm_r rm_hlbox';	
-		_hlbox.style.display = "none";
-		_hlbox.style.zIndex = 2147099701;
-		document.body.appendChild(_hlbox);		
-		
-	}
-
 	function clickHandler(event){	   			
 		var e = getElementUnderMouse(event);			
 		var jqe = jQuery(e);
 		if(jqe.hasClass('rm_r'))return false;
-
 		_chosenE = getElementXPath(e);
 		callback(_chosenE);
 		return false;		
@@ -55,37 +45,17 @@ function RMETagger(callback){
 		var e = getElementUnderMouse(event);			
 		var jqe = jQuery(e);
 		if(jqe.hasClass('rm_r'))return false;	
-		moveHLtoElement(getElementUnderMouse(event));
+		_hlbox.moveToElement(getElementUnderMouse(event));
 		return false;			
 	}
 
-	function moveHLtoElement(elem){				
-			
-			var jqe = jQuery(elem);
-			
-			if(jqe.hasClass('rm_r'))return;
-		
-			var eO = jqe.offset();
-			var eH = jqe.outerHeight();
-			var eW = jqe.outerWidth();
-			
-						
-			
-			_hlbox.style.left = (eO.left) + 'px';
-			_hlbox.style.top = (eO.top) + 'px';
-			
-			_hlbox.style.width = (eW-2) + 'px';
-			_hlbox.style.height = (eH-2) + 'px';
-					
-			_hlbox.style.display = 'block';
-		
 	
 	
-	}
+	
 	
 	function destroy(){
 		
-		_hlbox.style.display = "none";
+		_hlbox.destroy();
 		unBindEvents();
 	}
 	

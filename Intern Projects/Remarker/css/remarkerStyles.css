@@ -198,6 +198,65 @@ div.rm_popup{
     box-shadow: inset 0 0 8px 4px #548c29, 0 1px 0 0 #eeeeee; 
 }
 
+.redButton{
+	margin:0;
+	padding:0;
+    background-color: #cf473d;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#cf473d), to(#b7291f));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #cf473d, #b7291f);
+    background-image: -moz-linear-gradient(top, #cf473d, #b7291f);
+    background-image: -ms-linear-gradient(top, #cf473d, #b7291f);
+    background-image: -o-linear-gradient(top, #cf473d, #b7291f);
+    background-image: linear-gradient(top, #cf473d, #b7291f);
+    border: 1px solid #b7291f;
+    border-bottom: 1px solid #a8261c;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: inset 0 1px 0 0 #d76961;
+    -moz-box-shadow: inset 0 1px 0 0 #d76961;
+    -ms-box-shadow: inset 0 1px 0 0 #d76961;
+    -o-box-shadow: inset 0 1px 0 0 #d76961;
+    box-shadow: inset 0 1px 0 0 #d76961;
+    color: #fff;
+    font: bold 15px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+    line-height: 15px;
+    padding: 7px 0 8px 0;
+    text-align: center;
+    text-shadow: 0 -1px 0 #a12611;
+    box-sizing: border-box;
+	
+} 
+
+.redButton:hover {
+    background-color: #c24538;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#c24538), to(#ae2c1e));
+    /* Saf4+, Chrome */
+    background-image: -webkit-linear-gradient(top, #c24538, #ae2c1e);
+    background-image: -moz-linear-gradient(top, #c24538, #ae2c1e);
+    background-image: -ms-linear-gradient(top, #c24538, #ae2c1e);
+    background-image: -o-linear-gradient(top, #c24538, #ae2c1e);
+    background-image: linear-gradient(top, #c24538, #ae2c1e);
+    -webkit-box-shadow: inset 0 1px 0 0 #cb665b;
+    -moz-box-shadow: inset 0 1px 0 0 #cb665b;
+    -ms-box-shadow: inset 0 1px 0 0 #cb665b;
+    -o-box-shadow: inset 0 1px 0 0 #cb665b;
+    box-shadow: inset 0 1px 0 0 #cb665b;
+    cursor: pointer; }
+    
+.redButton:active {
+    border: 1px solid #a8261c;
+    border-bottom: 1px solid #9b2219;
+    -webkit-box-shadow: inset 0 0 8px 4px #9b271b, 0 1px 0 0 #eeeeee;
+    -moz-box-shadow: inset 0 0 8px 4px #9b271b, 0 1px 0 0 #eeeeee;
+    -ms-box-shadow: inset 0 0 8px 4px #9b271b, 0 1px 0 0 #eeeeee;
+    -o-box-shadow: inset 0 0 8px 4px #9b271b, 0 1px 0 0 #eeeeee;
+    box-shadow: inset 0 0 8px 4px #9b271b, 0 1px 0 0 #eeeeee; 
+}
+
 /* ////////////LOGIN BOX - END //////////// */
 
 /* ////////////SIDE BAR -START //////////// */
@@ -347,7 +406,14 @@ div.rm_sideBar{
 /* /////////// NEW EDIT BAR -START /////////// */
 
 .rm_sideBar  #addButton{	
-	width: 296px;
+	width: 200px;
+	height: 46px;
+	margin-left: 2px;
+	margin-top: 2px;	
+}
+
+.rm_sideBar  #backButton{	
+	width: 96px;
 	height: 46px;
 	margin-left: 2px;
 	margin-top: 2px;	
@@ -461,25 +527,7 @@ div.rm_sideBar{
 /* //////////// NEW EDIT BAR - END //////////// */
 
 
-.rm_hlbox{
-	margin: 0;
-	padding: 0px;
-	border: 0;
-	font-size: 100%;
-	font-family: arial,sans-serif;
-	vertical-align: baseline;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	border: 1px solid #003;
-	width: 10px;
-	height: 10px;	
-	pointer-events: none;
-	background-color: #09C;
-	opacity: 0.4;
-}
-
-.rm_clickBox {
+.rm_obox {
 	margin: 0;
 	padding: 0px;
 	border: 0;
@@ -489,10 +537,9 @@ div.rm_sideBar{
 	position:absolute;
 	top:0px;
 	left:0px;
-	border:1px solid #003;
+	border:1px solid;
 	width: 10px;
 	height: 10px;	
 	pointer-events: none;
-	background-color:#C00;
 	opacity:0.4;
 }

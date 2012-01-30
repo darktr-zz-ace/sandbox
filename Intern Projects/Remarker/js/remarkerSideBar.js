@@ -6,6 +6,7 @@ function RMSideBar(){
 	var _mode = 0; //0 - list 1 - newtag
 	var _eSelectMode = false;
 	var _rmtagger;
+	var _clickBox;
 
 	function create(){
 	
@@ -25,7 +26,7 @@ function RMSideBar(){
 		jQuery(_sideBar).show(300);
 		_mode = 0;
 		jQuery(window).resize(updateSize);
-		
+		_clickBox = new RMBox("background-color: #C90; border: 1px solid #300;");
 	}
 	
 	function toggleSelectElement(){
@@ -49,7 +50,7 @@ function RMSideBar(){
 		_rmtagger.destroy();
 		_eSelectMode = false;
 		jQuery("#rm_chooseElementButton").removeClass("down");
-	
+		_clickBox.moveToElement(getElementFromPath(xp));
 	}
 	
 	function unSelectElement(){
@@ -57,6 +58,7 @@ function RMSideBar(){
 		jQuery('#rmXPspan').css('color','#999999');
 		jQuery('#rmXPspan').css('fontStyle','italic');
 		jQuery("#rm_unchooseElementButton").hide();
+		_clickBox.hide();
 	}
 	
 	
@@ -78,7 +80,7 @@ function RMSideBar(){
 			'<div class="rm_r filterBar"><p class="rm_r">Attach an Element:</p></div><div id="optionsC" class="rm_r contentBox" style="overflow: hidden">'+
 			'<a id="rm_chooseElementButton" class="rm_r"></a><span id="rmXPspan" class="rm_r" style="float:left;padding-top:6px"> No element selected. </span><a id="rm_unchooseElementButton" class="rm_r" style="display:none"></a></div>'+
 			'</div>'+
-			'<div class="rm_r createBar"><input id="addButton" class="rm_r greenButton" type="button" value="Save" onclick=""></div>';		
+			'<div class="rm_r createBar"><input id="addButton" class="rm_r greenButton" type="button" value="Save" onclick=""><input id="backButton" class="rm_r redButton" type="button" value="Back" onclick=""></div>';		
 	
 	}
 	
@@ -90,18 +92,19 @@ function RMSideBar(){
 		var ne = jQuery(_innerHt);
 		ne.hide(100);
 		if(_mode == 0){
-		
-		_innerHt.innerHTML = newEditHTML();
-		jQuery("#addButton").click(sendTag);
-		jQuery("#rm_chooseElementButton").click(toggleSelectElement);
-		jQuery("#rm_unchooseElementButton").click(unSelectElement);
-		
-		_mode = 1;
+			
+			_innerHt.innerHTML = newEditHTML();
+			jQuery("#addButton").click(sendTag);
+			jQuery("#backButton").click(SwitchModes);
+			jQuery("#rm_chooseElementButton").click(toggleSelectElement);
+			jQuery("#rm_unchooseElementButton").click(unSelectElement);
+			
+			_mode = 1;
 		}else{
-		
-		_innerHt.innerHTML = normalHTML();
-		jQuery("#createButton").click(SwitchModes);
-		_mode = 0;
+			if(_clickBox)_clickBox.hide();
+			_innerHt.innerHTML = normalHTML();
+			jQuery("#createButton").click(SwitchModes);
+			_mode = 0;
 		}
 				
 		ne.show(100);
@@ -147,8 +150,7 @@ function RMSideBar(){
          || (w = Math.max( doc.clientWidth, body.clientWidth )) > self.innerWidth
          || (h = Math.max( doc.clientHeight, body.clientHeight )) > self.innerHeight ? { w : body.clientWidth, h : body.clientHeight } :
          { w : w, h : h }		
-			return {w : ((s1.w+s2)/2), h : s1.h};
-		 
+			return {w : ((s1.w+s2)/2), h : s1.h};		 
     }
 	
 	function updateSize(){
@@ -166,6 +168,7 @@ function RMSideBar(){
 		iC.animate({height: newH},0);	
 	}
 	
+	
 	function hide(){
 		jQuery(_sideBar).hide(100);
 	}
@@ -174,14 +177,7 @@ function RMSideBar(){
 		jQuery(_sideBar).show(100);
 	}
 	
-	function destroy(){
 	
-	
-	
-	
-	
-	}
-
 	create();
 
 	
