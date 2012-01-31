@@ -6,10 +6,12 @@ function RMSideBar(){
 	var _mode = 0; //0 - list 1 - newtag
 	var _eSelectMode = false;
 	var _rmtagger;
-	var _clickBox;
-	
+	var _clickBox;	
 	var _tagList;
 	var _currentFilters;
+	
+	
+	
 
 	function create(){
 	
@@ -29,7 +31,7 @@ function RMSideBar(){
 		jQuery("#bugButton").click(filterBy1);
 		jQuery("#impButton").click(filterBy2);
 		jQuery("#designButton").click(filterBy3);
-		jQuery("#doneButton").click(filterBy4);
+		//jQuery("#doneButton").click(filterBy4);
 		updateSize();
 		jQuery(_sideBar).show(300);
 		_mode = 0;
@@ -66,6 +68,10 @@ function RMSideBar(){
 		_clickBox.moveToElement(getElementFromPath(xp));
 	}
 	
+	function selectElement2(xp){	
+		_clickBox.moveToElement(getElementFromPath(xp));
+	}
+	
 	function unSelectElement(){
 		document.getElementById("rmXPspan").innerHTML = 'No element selected.';
 		jQuery('#rmXPspan').css('color','#999999');
@@ -79,8 +85,10 @@ function RMSideBar(){
 	function normalHTML(){
 	return '<div class="rm_r filterBar">'+
 		//'<a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
-		'<a id="doneButton" class="rm_r  filterButton" title="Filter by done."></a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
-		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a><a id="AllButton" class="rm_r  filterButton down2" title="Show all tags."></a></div>'+
+		//'<a id="doneButton" class="rm_r  filterButton" title="Filter by done.">'+		
+		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important.">'+
+		'</a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
+		'</a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a><a id="AllButton" class="rm_r  filterButton down2" title="Show all tags."></a></div>'+
 		'<div id="innerC" class="rm_r  innerContent"></div><div class=" rm_r createBar"><input id="createButton" class="rm_r greenButton" type="button" value="Add Tag" onclick=""></div>';	
 	}
 	
@@ -123,7 +131,7 @@ function RMSideBar(){
 			jQuery("#bugButton").click(filterBy1);
 			jQuery("#impButton").click(filterBy2);
 			jQuery("#designButton").click(filterBy3);
-			jQuery("#doneButton").click(filterBy4);
+			//jQuery("#doneButton").click(filterBy4);
 			
 			filterBy0();
 			_mode = 0;
@@ -229,7 +237,7 @@ function RMSideBar(){
 		jQuery('#bugButton').removeClass('down2');
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
-		jQuery('#doneButton').removeClass('down2');		
+		//jQuery('#doneButton').removeClass('down2');		
 		updateTagListHTML();			
 	}
 
@@ -239,7 +247,7 @@ function RMSideBar(){
 		jQuery('#bugButton').addClass('down2');
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
-		jQuery('#doneButton').removeClass('down2');		
+		//jQuery('#doneButton').removeClass('down2');		
 		updateTagListHTML();			
 	}
 	
@@ -249,7 +257,7 @@ function RMSideBar(){
 		jQuery('#bugButton').removeClass('down2');
 		jQuery('#impButton').addClass('down2');
 		jQuery('#designButton').removeClass('down2');
-		jQuery('#doneButton').removeClass('down2');		
+		//jQuery('#doneButton').removeClass('down2');		
 		updateTagListHTML();			
 	}
 	
@@ -259,7 +267,7 @@ function RMSideBar(){
 		jQuery('#bugButton').removeClass('down2');
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').addClass('down2');
-		jQuery('#doneButton').removeClass('down2');		
+		//jQuery('#doneButton').removeClass('down2');		
 		updateTagListHTML();			
 	}
 	
@@ -269,13 +277,14 @@ function RMSideBar(){
 		jQuery('#bugButton').removeClass('down2');
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
-		jQuery('#doneButton').addClass('down2');		
+		//jQuery('#doneButton').addClass('down2');		
 		updateTagListHTML();
 	}
 	
 	function updateTagListHTML(){
 		document.getElementById("innerC").innerHTML = _tagList.getAllTags();		
-		jQuery('a.rmTTarget').on('click',targetOver);		
+		jQuery('a.rmTTarget').on('mousemove mouseenter mouseover',targetOver);
+		jQuery('a.rmTTarget').on('mouseleave',_clickBox.hide);
 		
 		
 	}
@@ -285,7 +294,7 @@ function RMSideBar(){
 		var jqe = jQuery(e);
 		
 		console.log(jqe.attr('title'));
-	
+		selectElement2(jqe.attr('title'));
 	}
 	
 	

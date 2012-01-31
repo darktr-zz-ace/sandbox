@@ -1,5 +1,5 @@
-function RMTag(user, content, time, bug, design, important, xpath, done, version){
-		
+function RMTag(tid, user, content, time, bug, design, important, xpath, done, version){
+	var _tid = tid;
 	var _user = user;
 	var _content = content;
 	var _time = time;
@@ -20,11 +20,12 @@ function RMTag(user, content, time, bug, design, important, xpath, done, version
 		var o = '';
 		
 		o= '<div class="rmtagHeading"><span class="rms1">'+_user+' said:</span><span class="rms2">'+dString+'</span></div>'+ '<div class="rmtagContent">'+_content + '<div class="rmTagTypeDiv">';
-		if(_done)o+='<div class="rmTagTypeLabel rmTTLT"></div>';
+		
 		if(_important)o+='<div class="rmTagTypeLabel rmTTLI"></div>';
 		if(_design)o+='<div class="rmTagTypeLabel rmTTLD"></div>';		
 		if(_bug)o+='<div class="rmTagTypeLabel rmTTLB"></div>';
 		if(_xpath)o+='<a class="rmTTarget" title="'+_xpath+'"></a>';
+		//if(!_done)o+='<a class="rmDoneIcon" title="'+_xpath+'"></a>';
 		o+=	'</div></div>';
 		
 		return o;
@@ -43,7 +44,7 @@ function RMTag(user, content, time, bug, design, important, xpath, done, version
 	
 	
 	return {
-		
+		_tid : _tid,
 		_user : _user,
 		_content : _content,
 		_time : _time,

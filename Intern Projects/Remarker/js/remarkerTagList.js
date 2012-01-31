@@ -9,8 +9,8 @@ function RMTagList(){
 		currentFilters = 0;
 	}
 	
-	function addTag(user, content, time, bug, design, important, xpath, done, version){			
-		tagCount = tagArray.push(new RMTag(user, content, time, bug, design, important, xpath, done, version));
+	function addTag(tid, user, content, time, bug, design, important, xpath, done, version){			
+		tagCount = tagArray.push(new RMTag(tid, user, content, time, bug, design, important, xpath, done, version));
 		
 	}
 	
@@ -57,7 +57,7 @@ function RMTagList(){
 		var t = json.tags;
 		for (i=0;i<c;i++){			
 			var ti = t[i];
-			addTag(ti.username, ti.content, ti.dateCreated, ti.bug, ti.design, ti.important, ti.xPath, ti.done, ti.version);
+			addTag(ti.tid, ti.username, ti.content, ti.dateCreated, ti.bug, ti.design, ti.important, ti.xPath, ti.done, ti.version);
 		}
 		
 		if(pop)remarker.rm_sideBar.updateTagListHTML();

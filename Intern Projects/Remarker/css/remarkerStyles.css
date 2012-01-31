@@ -644,12 +644,19 @@ a.rmTTarget{
 	float:left;
 	width:20px;
 	height: 20px;
-	background-color: #ff0000;
 	margin:1px;
 	background-image:url(../images/miniTarget.png);
 
 
 }
 
+a.rmDoneIcon{
+	float:left;
+	width:20px;
+	height: 20px;
+	margin:1px;
+	background-image:url(../images/miniTick.png);
+
+}
 
 /*//////////////////////////////*/
