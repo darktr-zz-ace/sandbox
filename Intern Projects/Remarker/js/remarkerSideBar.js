@@ -9,13 +9,14 @@ function RMSideBar(){
 	var _clickBox;
 	
 	var _tagList;
+	var _currentFilters;
 
 	function create(){
 	
 		_sideBar = document.createElement('DIV');
 		_sideBar.className = 'rm_r rm_sideBar';
 		_sideBar.id = 'rm_sideBarObj';
-		_sideBar.innerHTML = '<div class="rm_r headerBar"><a id="flipButton" class="rm_r rmOnLeft" title="flip"></a></div><div id="innerH" class="rm_r"></div>';
+		_sideBar.innerHTML = '<div class="rm_r headerBar"><div class="headerImg"></div><a id="flipButton" class="rm_r rmOnLeft" title="flip"></a></div><div id="innerH" class="rm_r"></div>';
 		_sideBar.style.zIndex = 2147099801;
 		_sideBar.style.display = 'none';
 		_sideBar.style.left = '0px';
@@ -24,13 +25,19 @@ function RMSideBar(){
 		 _innerHt.innerHTML = normalHTML();	
 		jQuery("#flipButton").click(flip);
 		jQuery("#createButton").click(SwitchModes);
+		jQuery("#AllButton").click(filterBy0);
+			jQuery("#bugButton").click(filterBy1);
+			jQuery("#impButton").click(filterBy2);
+			jQuery("#designButton").click(filterBy3);
+			jQuery("#doneButton").click(filterBy4);
 		updateSize();
 		jQuery(_sideBar).show(300);
 		_mode = 0;
 		jQuery(window).resize(updateSize);
 		_clickBox = new RMBox("background-color: #C90; border: 1px solid #300;");
-		_tagList = new RMTagList();
+		_tagList = new RMTagList();		
 		_tagList.getFromServer();
+		filterBy0();
 		
 	}
 	
@@ -72,7 +79,7 @@ function RMSideBar(){
 	return '<div class="rm_r filterBar">'+
 		//'<a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
 		'<a id="doneButton" class="rm_r  filterButton" title="Filter by done."></a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
-		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a></div>'+
+		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a><a id="AllButton" class="rm_r  filterButton" title="Show all tags."></a></div>'+
 		'<div id="innerC" class="rm_r  innerContent"></div><div class=" rm_r createBar"><input id="createButton" class="rm_r greenButton" type="button" value="Add Tag" onclick=""></div>';	
 	}
 	
@@ -110,6 +117,14 @@ function RMSideBar(){
 			if(_clickBox)_clickBox.hide();
 			_innerHt.innerHTML = normalHTML();
 			jQuery("#createButton").click(SwitchModes);
+			
+			jQuery("#AllButton").click(filterBy0);
+			jQuery("#bugButton").click(filterBy1);
+			jQuery("#impButton").click(filterBy2);
+			jQuery("#designButton").click(filterBy3);
+			jQuery("#doneButton").click(filterBy4);
+			
+			
 			document.getElementById("innerC").innerHTML = _tagList.getAllTags();
 			_mode = 0;
 		}
@@ -207,8 +222,55 @@ function RMSideBar(){
 	//TAG LIST FUNCTIONS
 	
 	
+	function filterBy0(){
+		_tagList.setFilter(0);
+		jQuery('#AllButton').addClass('down2');
+		jQuery('#bugButton').removeClass('down2');
+		jQuery('#impButton').removeClass('down2');
+		jQuery('#designButton').removeClass('down2');
+		jQuery('#doneButton').removeClass('down2');		
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+	}
+
+	function filterBy1(){
+		_tagList.setFilter(1);
+		jQuery('#AllButton').removeClass('down2');
+		jQuery('#bugButton').addClass('down2');
+		jQuery('#impButton').removeClass('down2');
+		jQuery('#designButton').removeClass('down2');
+		jQuery('#doneButton').removeClass('down2');		
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+	}
 	
+	function filterBy2(){
+		_tagList.setFilter(2);
+		jQuery('#AllButton').removeClass('down2');
+		jQuery('#bugButton').removeClass('down2');
+		jQuery('#impButton').addClass('down2');
+		jQuery('#designButton').removeClass('down2');
+		jQuery('#doneButton').removeClass('down2');		
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+	}
 	
+	function filterBy3(){
+		_tagList.setFilter(3);
+		jQuery('#AllButton').removeClass('down2');
+		jQuery('#bugButton').removeClass('down2');
+		jQuery('#impButton').removeClass('down2');
+		jQuery('#designButton').addClass('down2');
+		jQuery('#doneButton').removeClass('down2');		
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+	}
+	
+	function filterBy4(){
+		_tagList.setFilter(4);
+		jQuery('#AllButton').removeClass('down2');
+		jQuery('#bugButton').removeClass('down2');
+		jQuery('#impButton').removeClass('down2');
+		jQuery('#designButton').removeClass('down2');
+		jQuery('#doneButton').addClass('down2');		
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+	}
 	
 	
 	

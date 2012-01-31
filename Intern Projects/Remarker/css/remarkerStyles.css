@@ -287,6 +287,13 @@ div.rm_sideBar{
     background-image: linear-gradient(top, #76b347, #5e9e2e);
 }
 
+.rm_sideBar .headerImg{
+	height:40px;
+	width:174px;
+	background-image:url(../images/headerLogo.png); 
+	float:left;
+}
+
 .rm_sideBar  #flipButton{
 	height: 40px;
 	float:right;
@@ -346,6 +353,15 @@ div.rm_sideBar{
 .rm_sideBar  a.filterButton:hover{
 	background-position: bottom right;	
 	
+}
+
+.rm_sideBar a.down2{
+	background-position: bottom right;	
+	
+}
+
+#AllButton{
+	background-image:url(../images/allBtn.png);
 }
 
 #designButton{
