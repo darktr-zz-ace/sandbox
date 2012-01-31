@@ -14,7 +14,7 @@
 function RemarkerMain(){
 	
 	var rm_login;
-	var rm_sidebar;
+	var rm_sideBar;
 	var rm_user;
 	var rm_comms;
 	
@@ -24,6 +24,7 @@ function RemarkerMain(){
 		rm_comms = new RMComms();
 		rm_user = new RMUserData();
 		rm_login = new RemarkerLogin(afterLogin);
+		rm_sideBar = new RMSideBar();
 	}
 	
 	//scrub page removes all links from page and unbinds mouseevents
@@ -40,8 +41,8 @@ function RemarkerMain(){
 		
 		
 		
-		rm_sideBar = new RMSideBar();
 		
+		rm_sideBar.create();
 	}
 	
 	
@@ -49,7 +50,7 @@ function RemarkerMain(){
 
 	return{
 		rm_login : rm_login,
-		rm_sidebar : rm_sidebar,
+		rm_sideBar : rm_sideBar,
 		rm_user : rm_user,
 		rm_comms : rm_comms
 	

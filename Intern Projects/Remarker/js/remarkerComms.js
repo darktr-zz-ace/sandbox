@@ -30,6 +30,7 @@ function RMComms(){
 	//callback IS A STRING!!!!
 	function send(url,_actionCallBack, _pop){			
 		if(waiting)return; //TODO: THROW ERRRORRRRR
+		console.log(url);
 		var head = document.getElementsByTagName("head")[0];
 		var script = document.createElement("script");
 		actionCallBack = _actionCallBack;

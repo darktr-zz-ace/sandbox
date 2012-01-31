@@ -24,7 +24,7 @@ function RMTag(user, content, time, bug, design, important, xpath, done, version
 		if(_important)o+='<div class="rmTagTypeLabel rmTTLI"></div>';
 		if(_design)o+='<div class="rmTagTypeLabel rmTTLD"></div>';		
 		if(_bug)o+='<div class="rmTagTypeLabel rmTTLB"></div>';
-		if(_xpath)o+='<a class="rmTTarget"></a>';
+		if(_xpath)o+='<a class="rmTTarget" title="'+_xpath+'"></a>';
 		o+=	'</div></div>';
 		
 		return o;

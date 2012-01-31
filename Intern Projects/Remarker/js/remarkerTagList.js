@@ -19,18 +19,17 @@ function RMTagList(){
 	function getAllTags(){
 		var output = '';
 		if(tagCount==0){			
-			output = output + '<p class="rmcenterT"> No tags found for this webpage. </p>';		
+			output = '<p class="rmcenterT"> No tags found for this webpage and token. </p>';		
 		}else{
-			for (i=0;i<(tagCount);i++){
-			
+			for (i=0;i<(tagCount);i++){			
 				var tag = tagArray[i];
-				console.log(currentFilters);
 				if(tag.matchesFilter(currentFilters)){
 					output = output + tag.getHTML();
 				}
 			
 				
 			}
+			if(output=='')output='<p class="rmcenterT"> No tags found for this filter. </p>';
 		}
 		return output;
 	}
@@ -40,8 +39,8 @@ function RMTagList(){
 	function getFromServer(){
 			tagCount = 0;
 			tagArray = new Array();
-			
-			remarker.rm_comms.send('http://192.168.1.8:8080/newRemarker/tag/remoteList',tagsFromServer,true);
+			var loc = escape(remarker.rm_user.url);
+			remarker.rm_comms.send('http://192.168.1.8:8080/newRemarker/tag/remoteList?token='+remarker.rm_user.token+'&url='+loc,tagsFromServer,true);
 			
 	
 	}
@@ -61,7 +60,7 @@ function RMTagList(){
 			addTag(ti.username, ti.content, ti.dateCreated, ti.bug, ti.design, ti.important, ti.xPath, ti.done, ti.version);
 		}
 		
-		if(pop)document.getElementById("innerC").innerHTML = getAllTags();
+		if(pop)remarker.rm_sideBar.updateTagListHTML();
 		
 	}
 	

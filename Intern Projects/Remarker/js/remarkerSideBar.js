@@ -26,10 +26,10 @@ function RMSideBar(){
 		jQuery("#flipButton").click(flip);
 		jQuery("#createButton").click(SwitchModes);
 		jQuery("#AllButton").click(filterBy0);
-			jQuery("#bugButton").click(filterBy1);
-			jQuery("#impButton").click(filterBy2);
-			jQuery("#designButton").click(filterBy3);
-			jQuery("#doneButton").click(filterBy4);
+		jQuery("#bugButton").click(filterBy1);
+		jQuery("#impButton").click(filterBy2);
+		jQuery("#designButton").click(filterBy3);
+		jQuery("#doneButton").click(filterBy4);
 		updateSize();
 		jQuery(_sideBar).show(300);
 		_mode = 0;
@@ -37,7 +37,8 @@ function RMSideBar(){
 		_clickBox = new RMBox("background-color: #C90; border: 1px solid #300;");
 		_tagList = new RMTagList();		
 		_tagList.getFromServer();
-		filterBy0();
+		
+		
 		
 	}
 	
@@ -79,7 +80,7 @@ function RMSideBar(){
 	return '<div class="rm_r filterBar">'+
 		//'<a id="sortTimeButton" class="rm_r  sortButton" title="Sort by time"></a>'+
 		'<a id="doneButton" class="rm_r  filterButton" title="Filter by done."></a><a id="designButton" class="rm_r  filterButton" title="Filter by design.">'+
-		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a><a id="AllButton" class="rm_r  filterButton" title="Show all tags."></a></div>'+
+		'</a><a id="impButton" class="rm_r  filterButton" title="Filter by important."></a><a id="bugButton" class="rm_r  filterButton" title="Filter by bugs."></a><a id="AllButton" class="rm_r  filterButton down2" title="Show all tags."></a></div>'+
 		'<div id="innerC" class="rm_r  innerContent"></div><div class=" rm_r createBar"><input id="createButton" class="rm_r greenButton" type="button" value="Add Tag" onclick=""></div>';	
 	}
 	
@@ -124,8 +125,7 @@ function RMSideBar(){
 			jQuery("#designButton").click(filterBy3);
 			jQuery("#doneButton").click(filterBy4);
 			
-			
-			document.getElementById("innerC").innerHTML = _tagList.getAllTags();
+			filterBy0();
 			_mode = 0;
 		}
 				
@@ -146,8 +146,9 @@ function RMSideBar(){
 		
 		var user = remarker.rm_user.username;
 		var loc = escape(remarker.rm_user.url);
-		var binfo = remarker.rm_user.browserInfo.stringo;		
-		var url='http://192.168.1.8:8080/newRemarker/tag/remoteSave?content='+content+'&username='+user+'&url='+loc+'&xpath='+ele+'&browserInfo='+binfo+'&design='+des+'&bug='+bug+'&important='+imp
+		var binfo = remarker.rm_user.browserInfo.stringo;	
+		var token = remarker.rm_user.token;
+		var url='http://192.168.1.8:8080/newRemarker/tag/remoteSave?content='+content+'&username='+user+'&url='+loc+'&xpath='+ele+'&browserInfo='+binfo+'&design='+des+'&bug='+bug+'&important='+imp+"&token="+token;
 		remarker.rm_comms.send(url,tagAddResult);	
 		
 		
@@ -229,7 +230,7 @@ function RMSideBar(){
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
 		jQuery('#doneButton').removeClass('down2');		
-		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+		updateTagListHTML();			
 	}
 
 	function filterBy1(){
@@ -239,7 +240,7 @@ function RMSideBar(){
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
 		jQuery('#doneButton').removeClass('down2');		
-		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+		updateTagListHTML();			
 	}
 	
 	function filterBy2(){
@@ -249,7 +250,7 @@ function RMSideBar(){
 		jQuery('#impButton').addClass('down2');
 		jQuery('#designButton').removeClass('down2');
 		jQuery('#doneButton').removeClass('down2');		
-		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+		updateTagListHTML();			
 	}
 	
 	function filterBy3(){
@@ -259,7 +260,7 @@ function RMSideBar(){
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').addClass('down2');
 		jQuery('#doneButton').removeClass('down2');		
-		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+		updateTagListHTML();			
 	}
 	
 	function filterBy4(){
@@ -269,14 +270,42 @@ function RMSideBar(){
 		jQuery('#impButton').removeClass('down2');
 		jQuery('#designButton').removeClass('down2');
 		jQuery('#doneButton').addClass('down2');		
-		document.getElementById("innerC").innerHTML = _tagList.getAllTags();			
+		updateTagListHTML();
+	}
+	
+	function updateTagListHTML(){
+		document.getElementById("innerC").innerHTML = _tagList.getAllTags();		
+		jQuery('a.rmTTarget').on('click',targetOver);		
+		
+		
+	}
+	
+	function targetOver(event){
+		var e = getElementUnderMouse(event);
+		var jqe = jQuery(e);
+		
+		console.log(jqe.attr('title'));
+	
 	}
 	
 	
 	
-	create();
-
 	
+	function getElementUnderMouse(e){	
+		if(e.srcElement){		
+			return e.srcElement;		
+		}else if(e.target){		
+			return e.target;		
+		}	
+  	}
+	
+
+	return{
+		
+		updateTagListHTML : updateTagListHTML,
+		filterBy0 : filterBy0,
+		create : create
+	}
 
 
 
