@@ -50,7 +50,7 @@ function RMCodeLoader(){
 			
 		
 		_loaderProgressContainer = document.createElement("DIV");
-		_loaderProgressContainer.style.cssText = 'width:300px; overflow:hidden; padding:2px; background: #444444; border: 2px solid #222222; margin-bottom:0px; margin-left: auto; margin-right: auto; margin-top:200px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;';
+		_loaderProgressContainer.style.cssText = 'width:300px; height:30px; overflow:hidden; padding:2px; background: #444444; border: 2px solid #222222; margin-bottom:0px; margin-left: auto; margin-right: auto; margin-top:200px; -moz-border-radius: 6px; -webkit-border-radius: 6px; border-radius: 6px;';
 		_loaderProgressContainer.style.cssText+="background-color: #FFFFFF; ";
 		_loaderProgressContainer.style.cssText+="background-image: -moz-linear-gradient(center top, #CCC, #FFF); background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CCC), color-stop(1, #FFF)); background-image: linear-gradient(top, #CCC, #FFF);";
 		//_loaderProgressContainer.style.cssText+= "filter: progid:DXImageTransform.Microsoft.gradient(startColorStr = '#CCCCCC', EndColorStr = '#FFFFFF'); background-repeat: no-repeat;"
@@ -112,7 +112,7 @@ function RMCodeLoader(){
 		style.onload = style.onreadystatechange = function(){
 			if( !done && ( !this.readyState || this.readyState == "loaded" || this.readyState == "complete") ){
 				done = true;
-				//console.log('Loaded CSS from: ' + url);		
+				
 				callback();						
 				style.onload = style.onreadystatechange = null;        	
 			}

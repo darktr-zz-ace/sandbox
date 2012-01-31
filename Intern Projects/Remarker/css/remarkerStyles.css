@@ -21,6 +21,7 @@ body{
 	height: auto;
 	text-align: left;
 	box-sizing: content-box;
+	text-indent: 0px;
 }
 
 .rm_r *{
@@ -35,6 +36,7 @@ body{
 		width: auto;
 	height: auto;
 	text-align: left;
+	text-indent: 0px;
 }
 
 .rm_r table{
