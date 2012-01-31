@@ -1,0 +1,12 @@
+Remarker is a web annotation tool used for commenting and annotating a webpages content and design. It is designed to be run from a simple seed script embedded in the client page that dynamically loads content from the Grails server.
+
+--
+
+The css, images and js folders hold the code that will be stored on the server and loaded by the seed script. 
+Because these folders are stored on a grails application they will need to be declared in the applicationResources file so that they can be accessed by a url from the client website.
+
+The Client.. folder contains the seed script itself and two test webpages.
+
+--
+
+The css document uses relative pathnames to address the images used in Remarker, these will need to be changed to urls on the grails server once the application is deployed so that the client can read the images.

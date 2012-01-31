@@ -1,0 +1,15 @@
+These are the Javascript files loaded for Remarker. 
+
+remarkerMain  		:  	The main method and loader. This is instanced by the seed script.
+remarkerETagger		:	This allows elements to be tagged and selected.
+remarkerLogin		:	This controls the login instance.
+remarkerComms		:	This contains communication methods for requests and responses to the server.
+remarkerOBox		:	This controls and creates semi-transparent boxes to highlite elements on the page.
+remarkerOverlay		:	This is used to create simple lightbox affects for popups and overlays.
+remarkerSideBar		:	This file contains the bulk of the actual code and controls the side bar and all of its content.
+remarkerTag		:	A Tag object.
+remarkerTagList		:	Data storage object for the tags requested from the server.
+remarkerUserData	:	Stores data and values for the user, eg: username, session token and browser information.
+remarkerXPathLib	:	Methods for addressing and creating XPath strings.
+
+dateFormat		:	A Javascript library for parsing and manipulating dates and times.

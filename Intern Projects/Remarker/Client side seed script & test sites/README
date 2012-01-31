@@ -1,0 +1,7 @@
+RemarkerSeed is the javascript seed that is embedded in the client website. It launches Remarker once CTRL-ALT-R is pressed and loads the rest of Remarker from the server. 
+
+Because it was not deployed properly the pathnames are still based in the C drive for testing. This would need to be changed to the op address and resources folder of the Grails application once it is fully deployed.
+
+--
+
+test1.html and test2.html are two basic html pages with various DOM elements to test Remarker on. The two pages have different urls therefore they appear as two different sites to Remarker.

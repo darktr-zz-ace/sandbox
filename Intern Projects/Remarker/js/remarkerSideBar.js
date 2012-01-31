@@ -293,7 +293,7 @@ function RMSideBar(){
 		var e = getElementUnderMouse(event);
 		var jqe = jQuery(e);
 		
-		console.log(jqe.attr('title'));
+		
 		selectElement2(jqe.attr('title'));
 	}
 	
